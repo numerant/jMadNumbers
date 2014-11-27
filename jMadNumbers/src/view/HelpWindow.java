@@ -54,11 +54,11 @@ public class HelpWindow extends JDialog
         {
             JLabel lblHowToPlay = new JLabel("How to play");
             lblHowToPlay.setHorizontalAlignment(SwingConstants.CENTER);
-            lblHowToPlay.setFont(new Font("Dialog", Font.BOLD, 18));
+            lblHowToPlay.setFont(new Font("Dialog", Font.PLAIN, 14));
             contentPanel.add(lblHowToPlay, BorderLayout.NORTH);
         }
         {
-            JLabel lblNewLabel = new JLabel("<html>How to play<br>\nHow to play</html>");
+            JLabel lblNewLabel = new JLabel("<html>Try to outwit the computer in this puzzle game!<br>Force the computer to take lots of negative points (red digits) while you collect the positive points (green digits)!</html>");
             lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 14));
             contentPanel.add(lblNewLabel, BorderLayout.CENTER);
         }
