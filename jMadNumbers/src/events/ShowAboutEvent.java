@@ -16,7 +16,7 @@ public class ShowAboutEvent extends BoardEvent
      */
     public void process(View view, Model model)
     {
-        String message = "<html>jNetwalk<br>by Jakub Maleszewski</html>";
+        String message = "<html>jMadNumbers by:<br><br>Jakub Maleszewski<br>Lukasz Waclawski<br>Michal Zolyniak</html>";
         String title = "About";
 
         view.showMessage(message, title);
