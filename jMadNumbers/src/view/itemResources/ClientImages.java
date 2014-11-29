@@ -6,9 +6,9 @@ import java.util.EnumMap;
 
 import javax.imageio.ImageIO;
 
-import model.MazeMockItem;
-import model.BoardItems.Client;
-import model.MazeMockItem.Direction;
+import modelOld.MazeMockItem;
+import modelOld.BoardItems.Client;
+import modelOld.MazeMockItem.Direction;
 
 /**
  * Class containing image resources for {@link Client}

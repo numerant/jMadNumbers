@@ -1,22 +1,22 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
 import java.awt.Image;
-import view.itemResources.StraightWireImages;
-import model.MazeMockItem;
 
+import view.itemResources.TriWayWireImages;
+import modelOld.MazeMockItem;
 
 /**
- * Represents straight (|) wire on the maze
+ * Represents tri-way (-|) wire on the maze
  * 
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class StraightWire extends Wire
+public class TriWayWire extends Wire
 {
     /**
      * Creates object with a specific direction
      */
-    public StraightWire(Direction direction)
+    public TriWayWire(Direction direction)
     {
         this.direction = direction;
         isConnected = false;
@@ -27,6 +27,6 @@ public class StraightWire extends Wire
      */
     public Image getImage()
     {
-        return StraightWireImages.getImage(this);
+        return TriWayWireImages.getImage(this);
     }
 }

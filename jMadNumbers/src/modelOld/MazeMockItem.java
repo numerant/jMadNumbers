@@ -1,8 +1,8 @@
-package model;
+package modelOld;
 
 import java.awt.Image;
 
-import model.BoardItems.Server;
+import modelOld.BoardItems.Server;
 
 /**
  * Class representing type of a field on the maze

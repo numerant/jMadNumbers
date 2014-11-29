@@ -6,9 +6,9 @@ import java.util.EnumMap;
 
 import javax.imageio.ImageIO;
 
-import model.MazeMockItem;
-import model.BoardItems.StraightWire;
-import model.MazeMockItem.Direction;
+import modelOld.MazeMockItem;
+import modelOld.BoardItems.StraightWire;
+import modelOld.MazeMockItem.Direction;
 
 /**
  * Class containing image resources for {@link StraightWire}

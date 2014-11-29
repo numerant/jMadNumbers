@@ -3,7 +3,7 @@ package controller;
 import java.util.concurrent.BlockingQueue;
 
 import events.BoardEvent;
-import model.Model;
+import modelOld.Model;
 import view.View;
 
 /**

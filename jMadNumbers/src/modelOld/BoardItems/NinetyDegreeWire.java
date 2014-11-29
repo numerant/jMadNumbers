@@ -1,21 +1,22 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
 import java.awt.Image;
-import view.itemResources.TriWayWireImages;
-import model.MazeMockItem;
+
+import view.itemResources.NinetyDegreeWireImages;
+import modelOld.MazeMockItem;
 
 /**
- * Represents tri-way (-|) wire on the maze
+ * Represents 90-degree (L) wire on the maze
  * 
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class TriWayWire extends Wire
+public class NinetyDegreeWire extends Wire
 {
     /**
      * Creates object with a specific direction
      */
-    public TriWayWire(Direction direction)
+    public NinetyDegreeWire(Direction direction)
     {
         this.direction = direction;
         isConnected = false;
@@ -26,6 +27,6 @@ public class TriWayWire extends Wire
      */
     public Image getImage()
     {
-        return TriWayWireImages.getImage(this);
+        return NinetyDegreeWireImages.getImage(this);
     }
 }

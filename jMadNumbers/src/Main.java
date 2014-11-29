@@ -6,7 +6,7 @@
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import model.Model;
+import modelOld.Model;
 import view.View;
 import controller.Controller;
 import events.BoardEvent;

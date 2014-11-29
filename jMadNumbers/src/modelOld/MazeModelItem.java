@@ -1,4 +1,4 @@
-package model;
+package modelOld;
 
 /**
  * Represents an single item in model's maze representation

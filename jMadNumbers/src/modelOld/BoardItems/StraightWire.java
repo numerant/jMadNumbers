@@ -1,23 +1,23 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
 import java.awt.Image;
 
-import view.itemResources.ClientImages;
-import model.MazeMockItem;
+import view.itemResources.StraightWireImages;
+import modelOld.MazeMockItem;
+
 
 /**
- * Represents client items on the maze
- * Contains associated images within static EnumMap
+ * Represents straight (|) wire on the maze
  * 
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class Client extends MazeMockItem
+public class StraightWire extends Wire
 {
     /**
      * Creates object with a specific direction
      */
-    public Client(Direction direction)
+    public StraightWire(Direction direction)
     {
         this.direction = direction;
         isConnected = false;
@@ -28,7 +28,6 @@ public class Client extends MazeMockItem
      */
     public Image getImage()
     {
-        return ClientImages.getImage(this);
+        return StraightWireImages.getImage(this);
     }
-
 }

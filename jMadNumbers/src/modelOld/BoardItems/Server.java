@@ -1,8 +1,9 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
 import java.awt.Image;
+
 import view.itemResources.ServerImages;
-import model.MazeMockItem;
+import modelOld.MazeMockItem;
 
 /**
  * Represents server item on the maze

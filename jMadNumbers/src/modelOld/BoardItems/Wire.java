@@ -1,6 +1,6 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
-import model.MazeMockItem;
+import modelOld.MazeMockItem;
 
 /**
  * Abstract class for wire-type maze objects

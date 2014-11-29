@@ -1,22 +1,23 @@
-package model.BoardItems;
+package modelOld.BoardItems;
 
 import java.awt.Image;
 
-import view.itemResources.NinetyDegreeWireImages;
-import model.MazeMockItem;
+import view.itemResources.ClientImages;
+import modelOld.MazeMockItem;
 
 /**
- * Represents 90-degree (L) wire on the maze
+ * Represents client items on the maze
+ * Contains associated images within static EnumMap
  * 
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class NinetyDegreeWire extends Wire
+public class Client extends MazeMockItem
 {
     /**
      * Creates object with a specific direction
      */
-    public NinetyDegreeWire(Direction direction)
+    public Client(Direction direction)
     {
         this.direction = direction;
         isConnected = false;
@@ -27,6 +28,7 @@ public class NinetyDegreeWire extends Wire
      */
     public Image getImage()
     {
-        return NinetyDegreeWireImages.getImage(this);
+        return ClientImages.getImage(this);
     }
+
 }
