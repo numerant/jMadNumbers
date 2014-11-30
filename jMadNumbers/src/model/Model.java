@@ -56,4 +56,9 @@ public class Model
 	{
 		return board.getVisibilityMock();
 	}
+	
+	public Boolean[][] getActivityMock()
+	{
+		return board.getActivityMock();
+	}
 }

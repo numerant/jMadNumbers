@@ -13,6 +13,7 @@ public class Board
 	private Integer size;
 	private Integer pointsMock[][];
 	private Boolean visibilityMock[][];
+	private Boolean activityMock[][];
 		
 	public Board(Integer size)
 	{
@@ -20,6 +21,7 @@ public class Board
 		board = new BoardItem[size][size];
 		pointsMock = new Integer[size][size];
 		visibilityMock = new Boolean[size][size];
+		activityMock = new Boolean[size][size];
 		for(Integer i = 0; i < size; ++i)
 		{
 			for(Integer j = 0; j < size; j++)
@@ -27,6 +29,7 @@ public class Board
 				board[i][j] = new BoardItem(size);
 				pointsMock[i][j] = board[i][j].getDigit();
 				visibilityMock[i][j] = board[i][j].getVisible();
+				activityMock[i][j] = board[i][j].getActive();
 			}
 		}	
 	}
@@ -81,5 +84,10 @@ public class Board
 	public Boolean[][] getVisibilityMock()
 	{
 		return visibilityMock;
+	}
+	
+	public Boolean[][] getActivityMock()
+	{
+		return activityMock;
 	}
 }
