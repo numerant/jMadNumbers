@@ -1,6 +1,6 @@
 package events;
 
-import modelOld.Model;
+import model.Model;
 import view.View;
 
 /**

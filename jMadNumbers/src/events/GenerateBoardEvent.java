@@ -1,11 +1,12 @@
 package events;
 
-import modelOld.Model;
+import model.Model;
 import view.View;
 
 /**
- * Maze generation event
+ * Board generation event
  * @author Jakub Maleszewski
+ * @author Michal Zolyniak
  * @since 2014-05-26
  */
 public class GenerateBoardEvent extends BoardEvent
@@ -25,7 +26,7 @@ public class GenerateBoardEvent extends BoardEvent
     {
         view.setMoveCount(0);
         view.createBoardPanel(size);
-        model.generateMaze(size);
+        model.generateBoard(size);
     }
 
 }

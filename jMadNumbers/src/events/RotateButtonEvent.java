@@ -1,6 +1,6 @@
 package events;
 
-import modelOld.Model;
+import model.Model;
 import view.View;
 
 /**
@@ -21,7 +21,7 @@ public class RotateButtonEvent extends BoardEvent
     
     public void process(final View view, final Model model)
     {
-        model.rotateItem(xPosition, yPosition);
+        //model.rotateItem(xPosition, yPosition);
     }
 
 }
