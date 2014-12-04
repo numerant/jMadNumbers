@@ -32,6 +32,7 @@ public class BoardItem
 		}
 		this.active = false;
 		this.visible = true;
+		if (this.digit == 0) this.digit = 1;
 	}
 
 	public Integer getDigit() 

@@ -39,6 +39,7 @@ public class Board
 		for(Integer i = 0; i < size; ++i)
 		{
 			board[i][y].setActive(true);
+			activityMock[i][y] = true;
 		}
 	}
 	
@@ -47,6 +48,7 @@ public class Board
 		for(Integer i = 0; i < size; ++i)
 		{
 			board[i][y].setActive(false);
+			activityMock[i][y] = false;
 		}
 	}
 	
@@ -55,6 +57,7 @@ public class Board
 		for(Integer i = 0; i < size; ++i)
 		{
 			board[x][i].setActive(true);
+			activityMock[x][i] = true;
 		}
 	}
 	
@@ -63,12 +66,14 @@ public class Board
 		for(Integer i = 0; i < size; ++i)
 		{
 			board[x][i].setActive(false);
+			activityMock[x][i] = false;	
 		}
 	}
 	
 	public void hideBoardItem(Integer x, Integer y)
 	{
 		board[x][y].setVisible(false);
+		visibilityMock[x][y] = false;
 	}
 	
 	public Integer getPoints(Integer x, Integer y)
@@ -83,7 +88,14 @@ public class Board
 	
 	public Boolean[][] getVisibilityMock()
 	{
+		for(Integer i = 0; i < size; ++i)
+		{
+			for(Integer j = 0; j < size; j++)
+			{
+		System.out.println(visibilityMock[i][j]);
+			}}
 		return visibilityMock;
+		
 	}
 	
 	public Boolean[][] getActivityMock()
