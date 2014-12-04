@@ -24,6 +24,8 @@ public class ButtonClickEvent extends BoardEvent
     public void process(final View view, final Model model)
     {
         model.clickBoardItem(xPosition, yPosition, false);
+        view.setPointsMock(model.getPointsMock());
+        view.setActivityMock(model.getActivityMock());
     }
 
 }

@@ -191,7 +191,7 @@ public class Model
                 mock[xCurrent][yCurrent] = mazeItems[xCurrent][yCurrent].getImage();
             }
         
-        view.setMock(mock);
+      //  view.setMock(mock);
     }
     
     /**

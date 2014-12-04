@@ -3,11 +3,9 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import events.ButtonClickEvent;
@@ -70,13 +68,30 @@ public class GameBoard
      * Updates images on board buttons using a mock
      * @param mock
      */
-    public void updateBoardPanelFromMock(final Image[][] mock)
+    public void updatePointsFromMock(final Integer[][] mock)
     {
         for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
-                boardButtons[xCurrent][yCurrent].setIcon(new ImageIcon( mock[xCurrent][yCurrent] ));
+                boardButtons[xCurrent][yCurrent].setText( mock[xCurrent][yCurrent].toString() );
             }
+    }
+    
+    /**
+     * Updates activity state of buttons
+     * @param mock
+     */
+    public void updateActivityFromMock(Boolean[][] mock)
+    {
+        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
+            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            {
+                if (mock[xCurrent][yCurrent].equals(true))      //TODO is mock in model generated properly?
+                    boardButtons[xCurrent][yCurrent].setActive();
+                else
+                    boardButtons[xCurrent][yCurrent].setInactive();
+            }
+        
     }
     
     /**
@@ -115,6 +130,7 @@ public class GameBoard
     {
         return boardPanel;
     }
+
 }
 
 

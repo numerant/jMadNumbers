@@ -154,17 +154,32 @@ public class View
     }
     
     /**
-     * Updates on-screen board using a new mock
+     * Updates on-screen board using a new points mock
      * Makes board panel visible after update (useful when staring a new game)
      * @param mock - mock to update panel with
      */
-    public void setMock (final Image[][] mock)
+    public void setPointsMock (final Integer[][] mock)
     {
         EventQueue.invokeLater(new Runnable()
         {
             public void run() 
             {
-                board.updateBoardPanelFromMock(mock);
+                board.updatePointsFromMock(mock);
+                board.showBoard();
+            }
+        });
+    }
+    
+    /**
+     * Sets activity mock
+     */
+    public void setActivityMock (final Boolean[][] mock)
+    {
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run() 
+            {
+                board.updateActivityFromMock(mock);
                 board.showBoard();
             }
         });

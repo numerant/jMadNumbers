@@ -1,9 +1,12 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.JButton;
 
 /**
- * Internal class for representing a button aware of its position in a maze
+ * Internal class for representing a button aware of its position on board
  * @author Jakub Maleszewski
  * @since 2014-05-18
  */
@@ -11,6 +14,13 @@ import javax.swing.JButton;
 public class BoardButton extends JButton
 {
     private static final long serialVersionUID = 1L;    // to suppress warnings
+ 
+        // Font declaration
+    private static final Font defaultFont = new Font("Sans Serif", Font.BOLD, 20);
+        // Color declaration
+    private static final Color defaultFontColor = Color.BLACK;
+    private static final Color activeButtonColor = Color.GREEN;
+    private static final Color activeFontColor = Color.RED;
     
     /**
      * Constructor - sets button caption and maze position
@@ -18,5 +28,32 @@ public class BoardButton extends JButton
     public BoardButton(final String string)
     {
         super(string);
+        
+        this.setFont(defaultFont);
+        this.setForeground(defaultFontColor);
+        
+       // this.setBackground(Color.GREEN);
+        
+            // Flat design
+        this.setContentAreaFilled(false);
+    }
+    
+    /**
+     * Sets appearance of button as active
+     */
+    public void setActive()
+    {
+        this.setContentAreaFilled(true);
+        this.setForeground(activeFontColor);
+        this.setBackground(activeButtonColor);
+    }
+    
+    /**
+     * Sets appearance of button as inactive
+     */
+    public void setInactive()
+    {
+        this.setForeground(defaultFontColor);
+        this.setContentAreaFilled(false);
     }
 }

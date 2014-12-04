@@ -27,6 +27,8 @@ public class GenerateBoardEvent extends BoardEvent
         view.setAiScore(0);
         view.createBoardPanel(size);
         model.generateBoard(size);
+        view.setPointsMock(model.getPointsMock());
+        view.setActivityMock(model.getActivityMock());
     }
 
 }

@@ -16,6 +16,7 @@ public class BoardItem
 
 	public BoardItem(Integer size)
 	{
+	    //TODO prevent zeros from appearing on board
 		double d = Math.random();
 		Long L = Math.round(d*100);
 		this.digit = Integer.valueOf(L.intValue()%size);
