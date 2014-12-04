@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import events.PlayerButtonClickEvent;
+import events.ButtonClickEvent;
 import view.BoardButton;
 
 /**
@@ -91,7 +91,8 @@ public class GameBoard
         {                 
             public void actionPerformed(ActionEvent event)
             {
-                view.sendBoardEvent(new PlayerButtonClickEvent(xPosition, yPosition));
+                // now it's player's turn - setting isAiTurn to false
+                view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition, false));
             }
         });
     }

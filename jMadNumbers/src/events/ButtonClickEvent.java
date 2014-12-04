@@ -8,15 +8,17 @@ import view.View;
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class PlayerButtonClickEvent extends BoardEvent
+public class ButtonClickEvent extends BoardEvent
 {
     private Integer xPosition;
     private Integer yPosition;
+    private Boolean isAiTurn;
     
-    public PlayerButtonClickEvent(Integer xPosition, Integer yPosition)
+    public ButtonClickEvent(Integer xPosition, Integer yPosition, Boolean isAiTurn)
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        this.isAiTurn = isAiTurn;
     }
     
     public void process(final View view, final Model model)
