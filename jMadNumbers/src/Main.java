@@ -1,5 +1,5 @@
 /**
- * jNetwalk - simple netwalk game written in Java
+ * jMadNumbers - Mad Numbers game written in Java
  * 
  * @author Jakub Maleszewski
  */

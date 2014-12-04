@@ -8,12 +8,12 @@ import view.View;
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class RotateButtonEvent extends BoardEvent
+public class ButtonClickEvent extends BoardEvent
 {
     private Integer xPosition;
     private Integer yPosition;
     
-    public RotateButtonEvent(Integer xPosition, Integer yPosition)
+    public ButtonClickEvent(Integer xPosition, Integer yPosition)
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;

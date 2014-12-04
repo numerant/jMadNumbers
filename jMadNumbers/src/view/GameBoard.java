@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import events.RotateButtonEvent;
+import events.ButtonClickEvent;
 import view.BoardButton;
 
 /**
@@ -90,7 +90,7 @@ public class GameBoard
         {                 
             public void actionPerformed(ActionEvent event)
             {
-                view.sendBoardEvent(new RotateButtonEvent(xPosition, yPosition));
+                view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition));
             }
         });
     }

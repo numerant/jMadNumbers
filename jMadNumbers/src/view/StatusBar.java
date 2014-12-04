@@ -21,8 +21,10 @@ public class StatusBar
     private View view;
         /* Status bar items */
     private JPanel statusBarPanel;
-    private JLabel moveCountLabel;
-    private JLabel moveCountValue;
+    private JLabel playerScoreLabel;
+    private JLabel playerScoreValue;
+    private JLabel aiScoreLabel;
+    private JLabel aiScoreValue;
     
     StatusBar(final View view)
     {
@@ -38,16 +40,24 @@ public class StatusBar
     {
         statusBarPanel = new JPanel();
         statusBarPanel.setLayout(new BoxLayout(statusBarPanel, BoxLayout.X_AXIS));
+
+        aiScoreLabel = new JLabel("AI score:");
+        aiScoreLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        statusBarPanel.add(aiScoreLabel);
+        
+        aiScoreValue = new JLabel("");
+        //TODO: replace moveCountValue with variables representing results of the player and the computer
+        statusBarPanel.add(aiScoreValue);
         
         statusBarPanel.add(Box.createHorizontalGlue());
         
-        moveCountLabel = new JLabel("Move count:");
-        moveCountLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        statusBarPanel.add(moveCountLabel);
+        playerScoreLabel = new JLabel("Player score:");
+        playerScoreLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        statusBarPanel.add(playerScoreLabel);
         
-        moveCountValue = new JLabel("");
+        playerScoreValue = new JLabel("");
         //TODO: replace moveCountValue with variables representing results of the player and the computer
-        statusBarPanel.add(moveCountValue);
+        statusBarPanel.add(playerScoreValue);
     }
     
     /**
@@ -65,6 +75,6 @@ public class StatusBar
     //TODO: replace setMoveCountValue with setPlayerScore / setCPUScore
     public void setMoveCountValue(final Integer moveCount)
     {
-        moveCountValue.setText(moveCount.toString());
+        playerScoreValue.setText(moveCount.toString());
     }
 }
