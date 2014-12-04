@@ -46,7 +46,6 @@ public class StatusBar
         statusBarPanel.add(aiScoreLabel);
         
         aiScoreValue = new JLabel("");
-        //TODO: replace moveCountValue with variables representing results of the player and the computer
         statusBarPanel.add(aiScoreValue);
         
         statusBarPanel.add(Box.createHorizontalGlue());
@@ -56,7 +55,6 @@ public class StatusBar
         statusBarPanel.add(playerScoreLabel);
         
         playerScoreValue = new JLabel("");
-        //TODO: replace moveCountValue with variables representing results of the player and the computer
         statusBarPanel.add(playerScoreValue);
     }
     
@@ -69,12 +67,20 @@ public class StatusBar
     }
     
     /**
-     * Setter for moveCountValue
-     * @param moveCount number to set
+     * Setter for playerScoreValue
+     * @param score - number to set
      */
-    //TODO: replace setMoveCountValue with setPlayerScore / setCPUScore
-    public void setMoveCountValue(final Integer moveCount)
+    public void setPlayerScoreValue(final Integer score)
     {
-        playerScoreValue.setText(moveCount.toString());
+        playerScoreValue.setText(score.toString());
+    }
+    
+    /**
+     * Setter for aiScoreValue
+     * @param score - number to set
+     */
+    public void setAiScoreValue(final Integer score)
+    {
+        aiScoreValue.setText(score.toString());
     }
 }

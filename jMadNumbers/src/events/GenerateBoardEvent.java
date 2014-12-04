@@ -20,11 +20,11 @@ public class GenerateBoardEvent extends BoardEvent
     
     /**
      * Notifies view that the maze panel should be created now
-     * Tells
      */
     public void process(final View view, final Model model)
     {
-        view.setMoveCount(0);
+        view.setPlayerScore(0);
+        view.setAiScore(0);
         view.createBoardPanel(size);
         model.generateBoard(size);
     }

@@ -207,7 +207,7 @@ public class Model
         mazeModel[xPosition][yPosition].rotate();
         
         moveCount++;
-        view.setMoveCount(moveCount);
+        view.setPlayerScore(moveCount);
         
         updateModelItemsInternetConnection();
         

@@ -171,20 +171,35 @@ public class View
     }
     
     /**
-     * Wrapper for setting move count on status bar
-     * @param moveCount - number of moves to set as label
+     * Wrapper for setting player score on status bar
+     * @param score - score to set as label
      */
-    //TODO: replace with wrappers for setPlayerScore / setCPUScore
-    public void setMoveCount(final Integer moveCount)
+    public void setPlayerScore(final Integer score)
     {
         EventQueue.invokeLater(new Runnable()
         {
             public void run() 
             {
-                statusBar.setMoveCountValue(moveCount);
+                statusBar.setPlayerScoreValue(score);
             }
         });
     }
+    
+    /**
+     * Wrapper for setting AI score on status bar
+     * @param score - score to set as label
+     */
+    public void setAiScore(final Integer score)
+    {
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run() 
+            {
+                statusBar.setAiScoreValue(score);
+            }
+        });
+    }
+    
     
     /**
      * Shows specified message as a message box on the screen.
