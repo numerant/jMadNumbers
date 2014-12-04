@@ -29,7 +29,9 @@ public class Model
 		playerScore = 0;
 		AIscore = 0;
 	}
-		
+	
+	//TODO add generation of GameOverEvent
+	
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)
 	{
 		this.AIturn = AIturn;

@@ -59,7 +59,7 @@ public class View
         frame.setResizable(false);              //Due to bug in Java positioning does not work as intended
         frame.setLocationByPlatform(true);      //when both setResizable() and setLocationByPlatform() are used
         frame.setVisible(true);
-        frame.setTitle("jNetwalk");
+        frame.setTitle("jMadNumbers");
     }
 
     /**
