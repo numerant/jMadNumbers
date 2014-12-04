@@ -19,7 +19,7 @@ public class GenerateBoardEvent extends BoardEvent
     }
     
     /**
-     * Notifies view that the maze panel should be created now
+     * Notifies view that the board panel should be created now
      */
     public void process(final View view, final Model model)
     {

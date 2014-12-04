@@ -8,12 +8,12 @@ import view.View;
  * @author Jakub Maleszewski
  * @since 2014-05-26
  */
-public class ButtonClickEvent extends BoardEvent
+public class PlayerButtonClickEvent extends BoardEvent
 {
     private Integer xPosition;
     private Integer yPosition;
     
-    public ButtonClickEvent(Integer xPosition, Integer yPosition)
+    public PlayerButtonClickEvent(Integer xPosition, Integer yPosition)
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
@@ -21,7 +21,7 @@ public class ButtonClickEvent extends BoardEvent
     
     public void process(final View view, final Model model)
     {
-        //model.rotateItem(xPosition, yPosition);
+        model.clickBoardItem(xPosition, yPosition, false);
     }
 
 }

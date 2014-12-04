@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import events.ButtonClickEvent;
+import events.PlayerButtonClickEvent;
 import view.BoardButton;
 
 /**
@@ -23,7 +23,7 @@ public class GameBoard
 {
     private View view;
         /* Panel containing maze */
-    private Integer mazeSize;
+    private Integer boardSize;
     private JPanel boardPanel;
     private BoardButton[][] boardButtons;
     private static final Integer BUTTON_SIZE_PX = 64;
@@ -35,9 +35,10 @@ public class GameBoard
     public GameBoard(final View view, final Integer size)
     {
         this.view = view;
-        this.mazeSize = size;
+        this.boardSize = size;
         
         createBoardPanel();
+        showBoard();
     }
     
     /** 
@@ -47,12 +48,12 @@ public class GameBoard
     private void createBoardPanel()
     {
         boardPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(mazeSize, mazeSize, 0, 0));
+        boardPanel.setLayout(new GridLayout(boardSize, boardSize, 0, 0));
         
-        boardButtons = new BoardButton[mazeSize][mazeSize];
+        boardButtons = new BoardButton[boardSize][boardSize];
         
-        for (int yCurrent = 0; yCurrent < mazeSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < mazeSize; xCurrent++)
+        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
+            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
                 final BoardButton newButton = new BoardButton("");
                 newButton.setPreferredSize(new Dimension(BUTTON_SIZE_PX, BUTTON_SIZE_PX));
@@ -71,8 +72,8 @@ public class GameBoard
      */
     public void updateBoardPanelFromMock(final Image[][] mock)
     {
-        for (int yCurrent = 0; yCurrent < mazeSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < mazeSize; xCurrent++)
+        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
+            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
                 boardButtons[xCurrent][yCurrent].setIcon(new ImageIcon( mock[xCurrent][yCurrent] ));
             }
@@ -90,7 +91,7 @@ public class GameBoard
         {                 
             public void actionPerformed(ActionEvent event)
             {
-                view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition));
+                view.sendBoardEvent(new PlayerButtonClickEvent(xPosition, yPosition));
             }
         });
     }
