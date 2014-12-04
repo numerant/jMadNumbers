@@ -3,7 +3,7 @@ package modelOld;
 import java.awt.Image;
 import java.util.Vector;
 
-import events.ShowYouWonEvent;
+import events.GameOverEvent;
 import view.View;
 
 import modelOld.MazeMockItem.Direction;
@@ -213,7 +213,7 @@ public class Model
         
         sendMock();
         if (isMazeSolved())
-            view.sendBoardEvent(new ShowYouWonEvent(moveCount));
+            view.sendBoardEvent(new GameOverEvent(moveCount));
         
         
     }

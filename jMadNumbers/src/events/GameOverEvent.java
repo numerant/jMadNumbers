@@ -8,11 +8,11 @@ import view.View;
  * @author Jakub Maleszewski
  * @since 2014-05-29
  */
-public class ShowYouWonEvent extends BoardEvent
+public class GameOverEvent extends BoardEvent
 {
     private Integer moveCount;
     
-    public ShowYouWonEvent (final Integer moveCount)
+    public GameOverEvent (final Integer moveCount)
     {
         this.moveCount = moveCount;
     }
@@ -20,6 +20,7 @@ public class ShowYouWonEvent extends BoardEvent
     /**
      * Tell the view to create new message box
      */
+    //TODO replace messages
     public void process(View view, Model model)
     {
         String message = "<html>You won this game!<br>Moves: " + moveCount.toString() +"</html>";
