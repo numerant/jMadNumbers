@@ -88,14 +88,7 @@ public class Board
 	
 	public Boolean[][] getVisibilityMock()
 	{
-		for(Integer i = 0; i < size; ++i)
-		{
-			for(Integer j = 0; j < size; j++)
-			{
-		System.out.println(visibilityMock[i][j]);
-			}}
 		return visibilityMock;
-		
 	}
 	
 	public Boolean[][] getActivityMock()
