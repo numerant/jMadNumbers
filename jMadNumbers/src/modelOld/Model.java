@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import events.ShowYouWonEvent;
 import view.View;
-import modelOld.BoardItems.*;
+
 import modelOld.MazeMockItem.Direction;
 
 
@@ -89,16 +89,16 @@ public class Model
                 MazeModelItem modelItem = mazeModel[xCurrent][yCurrent];
                 MazeMockItem mockItem = null;
                 
-                if (modelItem.isClient())
-                    mockItem = new Client(getDirectionFromMazeModelItem(modelItem));
-                else if (modelItem.isServer())
-                    mockItem = new Server(getDirectionFromMazeModelItem(modelItem));
-                else if (modelItem.isTriWayWire())
-                    mockItem = new TriWayWire(getDirectionFromMazeModelItem(modelItem));
-                else if (modelItem.isNinetyDegreeWire())
-                    mockItem = new NinetyDegreeWire(getDirectionFromMazeModelItem(modelItem));
-                else 
-                    mockItem = new StraightWire(getDirectionFromMazeModelItem(modelItem));
+//                if (modelItem.isClient())
+//                    mockItem = new Client(getDirectionFromMazeModelItem(modelItem));
+//                else if (modelItem.isServer())
+//                    mockItem = new Server(getDirectionFromMazeModelItem(modelItem));
+//                else if (modelItem.isTriWayWire())
+//                    mockItem = new TriWayWire(getDirectionFromMazeModelItem(modelItem));
+//                else if (modelItem.isNinetyDegreeWire())
+//                    mockItem = new NinetyDegreeWire(getDirectionFromMazeModelItem(modelItem));
+//                else 
+//                    mockItem = new StraightWire(getDirectionFromMazeModelItem(modelItem));
                 
                 mazeItems[xCurrent][yCurrent] = mockItem;
             }

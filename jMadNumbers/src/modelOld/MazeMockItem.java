@@ -2,7 +2,7 @@ package modelOld;
 
 import java.awt.Image;
 
-import modelOld.BoardItems.Server;
+
 
 /**
  * Class representing type of a field on the maze
@@ -77,10 +77,10 @@ public abstract class MazeMockItem
      */
     public void setIsConnectedToTheInternet(Boolean isConnected)
     {
-        if (this instanceof Server)      //server is always connected
-            this.isConnected = true;
-        else
-            this.isConnected = isConnected;
+//        if (this instanceof Server)      //server is always connected
+//            this.isConnected = true;
+//        else
+//            this.isConnected = isConnected;
     }
     
 }

@@ -26,6 +26,8 @@ public class Model
 	public void generateBoard(Integer size)
 	{
 		board = new Board(size);
+		playerScore = 0;
+		AIscore = 0;
 	}
 		
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)
@@ -36,6 +38,8 @@ public class Model
 			 board.setColumnInactive(y);
 			 board.setRowActive(x);
 			 board.hideBoardItem(x,y);
+			 
+			 view.setAiScore(AIscore);
 		}
 		else
 		{
@@ -43,6 +47,8 @@ public class Model
 			 board.setRowInactive(x);
 			 board.setColumnActive(y);
 			 board.hideBoardItem(x,y);
+			 
+			 view.setPlayerScore(playerScore);
 		}
 		return;
 	}
