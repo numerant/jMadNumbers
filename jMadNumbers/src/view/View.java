@@ -186,6 +186,21 @@ public class View
     }
     
     /**
+     * Sets visibility mock
+     */
+    public void setVisibilityMock (final Boolean[][] mock)
+    {
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run() 
+            {
+                board.updateVisibilityFromMock(mock);
+                board.showBoard();
+            }
+        });
+    }
+    
+    /**
      * Wrapper for setting player score on status bar
      * @param score - score to set as label
      */

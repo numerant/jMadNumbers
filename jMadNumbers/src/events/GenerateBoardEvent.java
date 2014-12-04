@@ -29,6 +29,7 @@ public class GenerateBoardEvent extends BoardEvent
         model.generateBoard(size);
         view.setPointsMock(model.getPointsMock());
         view.setActivityMock(model.getActivityMock());
+        view.setVisibilityMock(model.getVisibilityMock());
     }
 
 }

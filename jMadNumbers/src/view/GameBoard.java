@@ -91,7 +91,22 @@ public class GameBoard
                 else
                     boardButtons[xCurrent][yCurrent].setInactive();
             }
-        
+    }
+    
+    /**
+     * Updates visibility state of buttons
+     * @param mock
+     */
+    public void updateVisibilityFromMock(Boolean[][] mock)
+    {
+        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
+            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            {
+                if (mock[xCurrent][yCurrent].equals(true))      //TODO is mock in model generated properly?
+                    boardButtons[xCurrent][yCurrent].setVisible(true);
+                else
+                    boardButtons[xCurrent][yCurrent].setVisible(false);
+            }
     }
     
     /**
