@@ -7,7 +7,7 @@ package model;
  *
  */
 
-public class Board 
+public class Board implements Cloneable
 {
 	private BoardItem board[][];
 	private Integer size;
@@ -32,6 +32,16 @@ public class Board
 				activityMock[i][j] = board[i][j].getActive();
 			}
 		}	
+	}
+	
+	public Object clone()
+	{
+		Board newBoard = new Board(size);
+		newBoard.board = board.clone();
+		newBoard.pointsMock = pointsMock.clone();
+		newBoard.visibilityMock = visibilityMock.clone();
+		newBoard.activityMock = activityMock.clone();
+		return newBoard;
 	}
 	
 	public void setColumnActive(Integer y)
