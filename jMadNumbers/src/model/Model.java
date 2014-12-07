@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Point;
+
 import view.View;
 
 /**
@@ -14,34 +16,39 @@ public class Model
 	private View view;
 	private Board board;
 	private Integer playerScore;
-	private Integer AIscore;
-	private Boolean AIturn;
+	private Integer aiScore;
+	private Boolean aiTurn;
 	
 	public Model(final View view)
 	{
 		this.view = view;
-		this.AIturn = false;
+		this.aiTurn = false;
 	}
 
 	public void generateBoard(Integer size)
 	{
 		board = new Board(size);
 		playerScore = 0;
-		AIscore = 0;
+		aiScore = 0;
+	}
+	
+	public Point getAIDecision()
+	{
+        return AI.MinMaxDecision(board, playerScore, aiScore);
 	}
 	
 	//TODO add generation of GameOverEvent
 	
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)
 	{
-		this.AIturn = AIturn;
-		if(this.AIturn){
-			 AIscore += board.getPoints(x,y);
+		this.aiTurn = AIturn;
+		if(this.aiTurn){
+			 aiScore += board.getPoints(x,y);
 			 board.setColumnInactive(y);
 			 board.setRowActive(x);
 			 board.hideBoardItem(x,y);
 			 
-			 view.setAiScore(AIscore);
+			 view.setAiScore(aiScore);
 		}
 		else
 		{

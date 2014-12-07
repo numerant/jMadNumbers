@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import events.AITurnEvent;
 import events.ButtonClickEvent;
 import view.BoardButton;
 
@@ -123,6 +124,10 @@ public class GameBoard
             {
                 // now it's player's turn - setting isAiTurn to false
                 view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition, false));
+                
+
+                // now it's AI's turn
+                view.sendBoardEvent(new AITurnEvent());
             }
         });
     }
