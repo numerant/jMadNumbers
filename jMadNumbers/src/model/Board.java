@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 /**
  * 
  * @author Michal Zolyniak
@@ -34,13 +36,31 @@ public class Board implements Cloneable
 		}	
 	}
 	
+	private Integer[][] copy(Integer[][] input) {
+	      Integer[][] target = new Integer[input.length][];
+	      for (int i=0; i <input.length; i++) {
+	    	  target[i] = new Integer[input[i].length];
+	        System.arraycopy(input[i], 0, target[i], 0, input[i].length);
+	      }
+	      return target;
+	}
+	
+	private Boolean[][] copy(Boolean[][] input) {
+	      Boolean[][] target = new Boolean[input.length][];
+	      for (int i=0; i <input.length; i++) {
+	    	  target[i] = new Boolean[input[i].length];
+	        System.arraycopy(input[i], 0, target[i], 0, input[i].length);
+	      }
+	      return target;
+	}
+	
 	public Object clone()
 	{
 		Board newBoard = new Board(size);
-		newBoard.board = board.clone();
-		newBoard.pointsMock = pointsMock.clone();
-		newBoard.visibilityMock = visibilityMock.clone();
-		newBoard.activityMock = activityMock.clone();
+		//newBoard.board = board.clone();
+		newBoard.pointsMock = copy(pointsMock);
+		newBoard.visibilityMock = copy(visibilityMock);
+		newBoard.activityMock = copy(activityMock);
 		return newBoard;
 	}
 	

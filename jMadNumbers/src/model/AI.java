@@ -26,7 +26,7 @@ public class AI
 		
     	for (Point move : state.listMoves())
     	{
-    		Integer currentValue = MinValue(state.makeMove(move));
+    		Integer currentValue = MinValue(state.makeMove(move), 8);
     		if (currentValue > maxValue)
     		{
     			maxValue = currentValue;
@@ -37,9 +37,10 @@ public class AI
     	return maxArgument;
 	}
 	
-    static private Integer MaxValue(GameState state)
+    static private Integer MaxValue(GameState state, Integer depth)
     {
-    	if (state.isGameOver())
+    	System.out.println("Max");
+    	if (state.isGameOver() || depth == 0)
     	{
     		return state.getScoresDifference();
     	}
@@ -48,15 +49,16 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move)));
+    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), depth-1));
     	}
     	
     	return maxValue;
     }
     
-    static private Integer MinValue(GameState state)
+    static private Integer MinValue(GameState state, Integer depth)
     {
-    	if (state.isGameOver())
+    	System.out.println("Min");
+    	if (state.isGameOver() || depth == 0)
     	{
     		return state.getScoresDifference();
     	}
@@ -65,7 +67,7 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		minValue = Math.min(minValue, MaxValue(state.makeMove(move)));
+    		minValue = Math.min(minValue, MaxValue(state.makeMove(move), depth-1));
     	}
     	
     	return minValue;
@@ -139,7 +141,7 @@ class GameState
 	}
 	
 	public Boolean isGameOver()
-	{
+	{System.out.println("MinMaxCalled for game over!" + listMoves().isEmpty());
 		return listMoves().isEmpty();
 	}
 }
