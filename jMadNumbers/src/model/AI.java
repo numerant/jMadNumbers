@@ -18,15 +18,15 @@ public class AI
 		GameState state = new GameState(board, playerScore, AIScore, true);
 		Integer maxValue = Integer.MIN_VALUE;
 		Point maxArgument = null;
-    	
+
 		if (state.isGameOver())
 		{
-			System.out.println("MinMaxCalled for game over!");
+			throw new RuntimeException("MinMaxCalled for game over!");
 		}
 		
     	for (Point move : state.listMoves())
     	{
-    		Integer currentValue = MinValue(state.makeMove(move), 8);
+    		Integer currentValue = MinValue(state.makeMove(move), 25, Integer.MIN_VALUE, Integer.MAX_VALUE);
     		if (currentValue > maxValue)
     		{
     			maxValue = currentValue;
@@ -37,9 +37,8 @@ public class AI
     	return maxArgument;
 	}
 	
-    static private Integer MaxValue(GameState state, Integer depth)
+    static private Integer MaxValue(GameState state, Integer depth, Integer alpha, Integer beta)
     {
-    	System.out.println("Max");
     	if (state.isGameOver() || depth == 0)
     	{
     		return state.getScoresDifference();
@@ -49,15 +48,19 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), depth-1));
+    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), depth-1, alpha, beta));
+    		if (maxValue > beta)
+    		{
+    			return maxValue;
+    		}
+    		alpha = Math.max(alpha, maxValue);
     	}
     	
     	return maxValue;
     }
     
-    static private Integer MinValue(GameState state, Integer depth)
+    static private Integer MinValue(GameState state, Integer depth, Integer alpha, Integer beta)
     {
-    	System.out.println("Min");
     	if (state.isGameOver() || depth == 0)
     	{
     		return state.getScoresDifference();
@@ -67,7 +70,12 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		minValue = Math.min(minValue, MaxValue(state.makeMove(move), depth-1));
+    		minValue = Math.min(minValue, MaxValue(state.makeMove(move), depth-1, alpha, beta));
+    		if (minValue < alpha)
+    		{
+    			return minValue;
+    		}
+    		beta = Math.min(beta, minValue);
     	}
     	
     	return minValue;
@@ -141,7 +149,7 @@ class GameState
 	}
 	
 	public Boolean isGameOver()
-	{System.out.println("MinMaxCalled for game over!" + listMoves().isEmpty());
+	{
 		return listMoves().isEmpty();
 	}
 }
