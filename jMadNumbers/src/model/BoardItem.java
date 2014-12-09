@@ -1,7 +1,7 @@
 package model;
 
 /**
- * 
+ * This class is used for representation single board item.
  */
 
 public class BoardItem 
@@ -37,31 +37,38 @@ public class BoardItem
 		else return (-1)*digit;
 	}
 
-	public Boolean getPositive() {
+	public Boolean getPositive()
+	{	
 		return positive;
 	}
 
-	public void setPositive(Boolean positive) {
+	public void setPositive(Boolean positive)
+	{
 		this.positive = positive;
 	}
 
-	public Boolean getActive() {
+	public Boolean getActive()
+	{
 		return active;
 	}
 
-	public void setActive(Boolean active) {
+	public void setActive(Boolean active)
+	{
 		this.active = active;
 	}
 
-	public Boolean getVisible() {
+	public Boolean getVisible()
+	{
 		return visible;
 	}
 
-	public void setVisible(Boolean visible) {
+	public void setVisible(Boolean visible)
+	{
 		this.visible = visible;
 	}
 
-	public void setDigit(Integer digit) {
+	public void setDigit(Integer digit)
+	{
 		this.digit = digit;
 	}
 }

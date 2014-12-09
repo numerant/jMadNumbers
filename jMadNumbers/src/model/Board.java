@@ -34,20 +34,24 @@ public class Board implements Cloneable
 		this.setRowActive(size/2);
 	}
 	
-	private Integer[][] copy(Integer[][] input) {
+	private Integer[][] copy(Integer[][] input)
+	{
 	      Integer[][] target = new Integer[input.length][];
-	      for (int i=0; i <input.length; i++) {
+	      for (int i=0; i <input.length; i++)
+	      {
 	    	  target[i] = new Integer[input[i].length];
-	        System.arraycopy(input[i], 0, target[i], 0, input[i].length);
+	    	  System.arraycopy(input[i], 0, target[i], 0, input[i].length);
 	      }
 	      return target;
 	}
 	
-	private Boolean[][] copy(Boolean[][] input) {
+	private Boolean[][] copy(Boolean[][] input)
+	{
 	      Boolean[][] target = new Boolean[input.length][];
-	      for (int i=0; i <input.length; i++) {
+	      for (int i=0; i <input.length; i++)
+	      {
 	    	  target[i] = new Boolean[input[i].length];
-	        System.arraycopy(input[i], 0, target[i], 0, input[i].length);
+	    	  System.arraycopy(input[i], 0, target[i], 0, input[i].length);
 	      }
 	      return target;
 	}
