@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import events.AITurnEvent;
 import events.ButtonClickEvent;
+import events.GameOverEvent;
 import view.BoardButton;
 
 /**
@@ -103,11 +104,31 @@ public class GameBoard
         for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
-                if (mock[xCurrent][yCurrent].equals(true))      //TODO is mock in model generated properly?
+                if (mock[xCurrent][yCurrent].equals(true))
                     boardButtons[xCurrent][yCurrent].setVisible(true);
                 else
                     boardButtons[xCurrent][yCurrent].setVisible(false);
             }
+    }
+    
+
+    /**
+     * Checks if there are still any possible choices - if not, sends game over event
+     * @param activityMock 
+     * @param visibilityMock
+     */
+    public void checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
+    {
+        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
+            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            {
+                if (activityMock[xCurrent][yCurrent].equals(true) && (visibilityMock[xCurrent][yCurrent].equals(true)))
+                {
+                    return;
+                }
+            }
+        view.sendBoardEvent(new GameOverEvent(0));
+        
     }
     
     /**
@@ -122,12 +143,10 @@ public class GameBoard
         {                 
             public void actionPerformed(ActionEvent event)
             {
-                // now it's player's turn - setting isAiTurn to false
-                view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition, false));
-                
-
-                // now it's AI's turn
-                view.sendBoardEvent(new AITurnEvent());
+                    view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition));
+                    
+                    //now it's AI turn
+                    view.sendBoardEvent(new AITurnEvent());
             }
         });
     }
@@ -137,7 +156,6 @@ public class GameBoard
      */
     public void showBoard()
     {
-        
         view.addPanel(boardPanel, BorderLayout.CENTER);
     }
     

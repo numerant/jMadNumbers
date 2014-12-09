@@ -27,6 +27,7 @@ public class AITurnEvent extends BoardEvent
         view.setPointsMock(model.getPointsMock());
         view.setActivityMock(model.getActivityMock());
         view.setVisibilityMock(model.getVisibilityMock());
+        view.checkIfGameOver(model.getActivityMock(), model.getVisibilityMock());
     }
 
 }

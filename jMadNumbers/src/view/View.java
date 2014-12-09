@@ -201,6 +201,16 @@ public class View
     }
     
     /**
+     * Wrapper for checking if there are still any available choices
+     * @param activityMock
+     * @param visibilityMock
+     */
+    public void checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
+    {
+        board.checkIfGameOver(activityMock, visibilityMock);
+    }
+    
+    /**
      * Wrapper for setting player score on status bar
      * @param score - score to set as label
      */
@@ -229,7 +239,6 @@ public class View
             }
         });
     }
-    
     
     /**
      * Shows specified message as a message box on the screen.

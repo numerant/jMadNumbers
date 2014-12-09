@@ -12,13 +12,12 @@ public class ButtonClickEvent extends BoardEvent
 {
     private Integer xPosition;
     private Integer yPosition;
-    private Boolean isAiTurn;
+    private final static Boolean isAiTurn = false;
     
-    public ButtonClickEvent(Integer xPosition, Integer yPosition, Boolean isAiTurn)
+    public ButtonClickEvent(Integer xPosition, Integer yPosition)
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.isAiTurn = isAiTurn;
     }
     
     public void process(final View view, final Model model)
@@ -27,6 +26,7 @@ public class ButtonClickEvent extends BoardEvent
         view.setPointsMock(model.getPointsMock());
         view.setActivityMock(model.getActivityMock());
         view.setVisibilityMock(model.getVisibilityMock());
+        view.checkIfGameOver(model.getActivityMock(), model.getVisibilityMock());
     }
 
 }
