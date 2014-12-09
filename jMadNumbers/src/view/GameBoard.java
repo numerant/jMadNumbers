@@ -117,17 +117,18 @@ public class GameBoard
      * @param activityMock 
      * @param visibilityMock
      */
-    public void checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
+    public Boolean checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
     {
         for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
                 if (activityMock[xCurrent][yCurrent].equals(true) && (visibilityMock[xCurrent][yCurrent].equals(true)))
                 {
-                    return;
+                    return false;
                 }
             }
         view.sendBoardEvent(new GameOverEvent(0));
+        return true;
         
     }
     
@@ -146,7 +147,7 @@ public class GameBoard
                     view.sendBoardEvent(new ButtonClickEvent(xPosition, yPosition));
                     
                     //now it's AI turn
-                    view.sendBoardEvent(new AITurnEvent());
+                    
             }
         });
     }

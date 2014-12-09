@@ -53,6 +53,6 @@ public class BoardButton extends JButton
     public void setInactive()
     {
         this.setContentAreaFilled(false);
-        //this.setEnabled(false);
+        this.setEnabled(false);
     }
 }

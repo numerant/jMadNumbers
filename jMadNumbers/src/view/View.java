@@ -205,9 +205,9 @@ public class View
      * @param activityMock
      * @param visibilityMock
      */
-    public void checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
+    public Boolean checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
     {
-        board.checkIfGameOver(activityMock, visibilityMock);
+        return board.checkIfGameOver(activityMock, visibilityMock);
     }
     
     /**

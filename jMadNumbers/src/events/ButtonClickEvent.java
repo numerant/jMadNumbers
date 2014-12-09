@@ -13,6 +13,7 @@ public class ButtonClickEvent extends BoardEvent
     private Integer xPosition;
     private Integer yPosition;
     private final static Boolean isAiTurn = false;
+    private Boolean isGameOver;
     
     public ButtonClickEvent(Integer xPosition, Integer yPosition)
     {
@@ -26,7 +27,11 @@ public class ButtonClickEvent extends BoardEvent
         view.setPointsMock(model.getPointsMock());
         view.setActivityMock(model.getActivityMock());
         view.setVisibilityMock(model.getVisibilityMock());
-        view.checkIfGameOver(model.getActivityMock(), model.getVisibilityMock());
+        
+        isGameOver = view.checkIfGameOver(model.getActivityMock(), model.getVisibilityMock());
+        
+        if(!isGameOver)
+            view.sendBoardEvent(new AITurnEvent());
     }
 
 }
