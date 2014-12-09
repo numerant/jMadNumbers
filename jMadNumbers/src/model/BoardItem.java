@@ -17,10 +17,10 @@ public class BoardItem
 	public BoardItem(Integer size)
 	{
 		double d = Math.random();
-		Long L = Math.round(d*100);
-		this.digit = Integer.valueOf(L.intValue()%size);
+		Long L = Math.round(d*1000);
+		this.digit = Integer.valueOf(L.intValue()%10);
 		d = Math.random();
-		L = Math.round(d*100);
+		L = Math.round(d*10);
 		if (Integer.valueOf(L.intValue()%2) == 0)
 		{
 			this.positive = true;

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 /**
  * 
  * @author Michal Zolyniak
@@ -21,9 +19,11 @@ public class Board implements Cloneable
 	{
 		this.size = size;
 		board = new BoardItem[size][size];
+		
 		pointsMock = new Integer[size][size];
 		visibilityMock = new Boolean[size][size];
 		activityMock = new Boolean[size][size];
+		
 		for(Integer i = 0; i < size; ++i)
 		{
 			for(Integer j = 0; j < size; j++)
@@ -34,6 +34,7 @@ public class Board implements Cloneable
 				activityMock[i][j] = board[i][j].getActive();
 			}
 		}	
+		this.setRowActive(size/2);
 	}
 	
 	private Integer[][] copy(Integer[][] input) {
