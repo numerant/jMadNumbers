@@ -18,7 +18,6 @@ public class BoardButton extends JButton
         // Font declaration
     private static final Font defaultFont = new Font("Sans Serif", Font.BOLD, 20);
         // Color declaration
-    private static final Color defaultFontColor = Color.BLACK;
     private static final Color activeButtonColor = Color.GREEN;
     private static final Color activeFontColor = Color.RED;
     
@@ -30,7 +29,6 @@ public class BoardButton extends JButton
         super(string);
         
         this.setFont(defaultFont);
-        this.setForeground(defaultFontColor);
         
        // this.setBackground(Color.GREEN);
         
@@ -46,6 +44,7 @@ public class BoardButton extends JButton
         this.setContentAreaFilled(true);
         this.setForeground(activeFontColor);
         this.setBackground(activeButtonColor);
+        this.setEnabled(true);
     }
     
     /**
@@ -53,7 +52,7 @@ public class BoardButton extends JButton
      */
     public void setInactive()
     {
-        this.setForeground(defaultFontColor);
         this.setContentAreaFilled(false);
+        //this.setEnabled(false);
     }
 }
