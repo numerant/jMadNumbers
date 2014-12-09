@@ -7,8 +7,6 @@ import view.View;
 
 /**
  * AI turn handling
- * @author Jakub Maleszewski
- * @since 2014-12-07
  */
 public class AITurnEvent extends BoardEvent
 {

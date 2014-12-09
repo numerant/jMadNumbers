@@ -5,8 +5,6 @@ import view.View;
 
 /**
  * Shows About message
- * @author Jakub Maleszewski
- * @since 2014-05-29
  */
 public class GameOverEvent extends BoardEvent
 {

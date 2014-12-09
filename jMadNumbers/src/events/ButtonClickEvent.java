@@ -5,8 +5,6 @@ import view.View;
 
 /**
  * Event handling maze item rotation
- * @author Jakub Maleszewski
- * @since 2014-05-26
  */
 public class ButtonClickEvent extends BoardEvent
 {

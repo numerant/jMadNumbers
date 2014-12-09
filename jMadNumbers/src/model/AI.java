@@ -6,9 +6,6 @@ import java.util.List;
 
 /**
  *
- * @author Lukasz Waclawski
- * @since 2014-12-05
- *
  */
 
 public class AI

@@ -11,9 +11,6 @@ import javax.swing.SwingConstants;
 /**
  * Class responsible for creating status bar in main application window.
  * Status bar contains actual score.
- * 
- * @author Jakub Maleszewski
- * @since 2014-05-25
  */
 
 public class StatusBar

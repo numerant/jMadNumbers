@@ -5,9 +5,6 @@ import view.View;
 
 /**
  * Board generation event
- * @author Jakub Maleszewski
- * @author Michal Zolyniak
- * @since 2014-05-26
  */
 public class GenerateBoardEvent extends BoardEvent
 {

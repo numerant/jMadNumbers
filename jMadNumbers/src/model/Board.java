@@ -2,9 +2,6 @@ package model;
 
 /**
  * 
- * @author Michal Zolyniak
- * @since 2014-11-30
- *
  */
 
 public class Board implements Cloneable

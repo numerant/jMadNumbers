@@ -6,9 +6,6 @@ import view.View;
 
 /**
  * 
- * @author Michal Zolyniak
- * @since 2014-11-29
- *
  */
 
 public class Model

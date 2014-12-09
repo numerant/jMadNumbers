@@ -10,9 +10,6 @@ import events.BoardEvent;
 
 /**
  * Class representing view in MVC. Creates interface and main window.
- * 
- * @author Jakub Maleszewski
- * @since 2014-05-18
  */
 
 public class View

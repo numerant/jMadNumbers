@@ -7,17 +7,12 @@ import javax.swing.JButton;
 
 /**
  * Internal class for representing a button aware of its position on board
- * @author Jakub Maleszewski
- * @since 2014-05-18
  */
 
 public class BoardButton extends JButton
 {
-    private static final long serialVersionUID = 1L;    // to suppress warnings
- 
-        // Font declaration
+    private static final long serialVersionUID = 1L;
     private static final Font defaultFont = new Font("Sans Serif", Font.BOLD, 20);
-        // Color declaration
     private static final Color activeButtonColor = Color.GREEN;
     private static final Color activeFontColor = Color.RED;
     

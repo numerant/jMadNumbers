@@ -2,9 +2,6 @@ package model;
 
 /**
  * 
- * @author Michal Zolyniak
- * @since 2014-11-29
- *
  */
 
 public class BoardItem 

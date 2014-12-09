@@ -15,8 +15,6 @@ import view.BoardButton;
 
 /**
  * Class responsible for creation of Mad Numbers board in the main window
- * @author Jakub Maleszewski
- * @since 2014-05-25
  */
  
 public class GameBoard

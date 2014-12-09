@@ -13,9 +13,6 @@ import events.*;
 
 /**
  * Class responsible for creating main application menu.
- * 
- * @author Jakub Maleszewski
- * @since 2014-05-25
  */
 
 public class MainMenu
