@@ -36,6 +36,13 @@ public class Model
 		aiScore = 0;
 	}
 	
+	public void generateMasterBoard()
+	{
+		board = new Board("master");
+		playerScore = 0;
+		aiScore = 0;
+	}
+	
 	public Point getAIDecision()
 	{
         return AI.MinMaxDecision(board, playerScore, aiScore);
