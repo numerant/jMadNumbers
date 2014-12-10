@@ -6,7 +6,7 @@ package model;
 
 public class BoardItem 
 {
-	private Integer digit;
+	private Integer number;
 	private Boolean positive;
 	private Boolean active;
 	private Boolean visible;
@@ -15,7 +15,7 @@ public class BoardItem
 	{
 		double d = Math.random();
 		Long L = Math.round(d*1000);
-		this.digit = Integer.valueOf(L.intValue()%10);
+		this.number = Integer.valueOf(L.intValue()%10);
 		d = Math.random();
 		L = Math.round(d*10);
 		if (Integer.valueOf(L.intValue()%2) == 0)
@@ -28,13 +28,21 @@ public class BoardItem
 		}
 		this.active = false;
 		this.visible = true;
-		if (this.digit == 0) this.digit = 1;
+		if (this.number == 0) this.number = 1;
 	}
 
-	public Integer getDigit() 
+	public BoardItem(Integer number, Boolean positive)
 	{
-		if(positive) return digit;
-		else return (-1)*digit;
+		this.number = number;
+		this.positive = positive;
+		this.active = false;
+		this.visible = true;
+	}
+	
+	public Integer getNumber() 
+	{
+		if(positive) return number;
+		else return (-1)*number;
 	}
 
 	public Boolean getPositive()
@@ -69,6 +77,6 @@ public class BoardItem
 
 	public void setDigit(Integer digit)
 	{
-		this.digit = digit;
+		this.number = digit;
 	}
 }

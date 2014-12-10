@@ -26,13 +26,100 @@ public class Board implements Cloneable
 			for(Integer j = 0; j < size; j++)
 			{
 				board[i][j] = new BoardItem(size);
-				pointsMock[i][j] = board[i][j].getDigit();
+				pointsMock[i][j] = board[i][j].getNumber();
 				visibilityMock[i][j] = board[i][j].getVisible();
 				activityMock[i][j] = board[i][j].getActive();
 			}
 		}	
 		this.setRowActive(size/2);
 	}
+	
+	public Board(String level)
+	{
+		if(level == "novice")
+		{
+			this.generateNoviceBoard();
+		}
+		else if(level == "master")
+		{
+			this.generateMasterBoard();			
+		}
+		else if(level == "legendary")
+		{
+			this.generateLegendaryBoard();
+		}
+	}
+	
+	private void generateNoviceBoard()
+	{
+		this.size = 12;
+		board = new BoardItem[size][size];
+		
+		pointsMock = new Integer[size][size];
+		visibilityMock = new Boolean[size][size];
+		activityMock = new Boolean[size][size];
+		
+		
+		
+		
+		for(Integer i = 0; i < size; ++i)
+		{
+			for(Integer j = 0; j < size; j++)
+			{
+				board[i][j] = new BoardItem(size);
+				pointsMock[i][j] = board[i][j].getNumber();
+				visibilityMock[i][j] = board[i][j].getVisible();
+				activityMock[i][j] = board[i][j].getActive();
+			}
+		}	
+		this.setRowActive(size/2);
+	}
+	
+	private void generateMasterBoard()
+	{
+		this.size = 16;
+		board = new BoardItem[size][size];
+		
+		pointsMock = new Integer[size][size];
+		visibilityMock = new Boolean[size][size];
+		activityMock = new Boolean[size][size];
+		
+		for(Integer i = 0; i < size; ++i)
+		{
+			for(Integer j = 0; j < size; j++)
+			{
+				board[i][j] = new BoardItem(size);
+				pointsMock[i][j] = board[i][j].getNumber();
+				visibilityMock[i][j] = board[i][j].getVisible();
+				activityMock[i][j] = board[i][j].getActive();
+			}
+		}	
+		this.setRowActive(size/2);
+	}
+	
+	private void generateLegendaryBoard()
+	{
+		this.size = size;
+		board = new BoardItem[size][size];
+		
+		pointsMock = new Integer[size][size];
+		visibilityMock = new Boolean[size][size];
+		activityMock = new Boolean[size][size];
+		
+		for(Integer i = 0; i < size; ++i)
+		{
+			for(Integer j = 0; j < size; j++)
+			{
+				board[i][j] = new BoardItem(size);
+				pointsMock[i][j] = board[i][j].getNumber();
+				visibilityMock[i][j] = board[i][j].getVisible();
+				activityMock[i][j] = board[i][j].getActive();
+			}
+		}	
+		this.setRowActive(size/2);
+	}
+	
+	
 	
 	private Integer[][] copy(Integer[][] input)
 	{
@@ -110,7 +197,7 @@ public class Board implements Cloneable
 	
 	public Integer getPoints(Integer x, Integer y)
 	{
-		return board[x][y].getDigit();
+		return board[x][y].getNumber();
 	}
 	
 	public Integer[][] getPointsMock()
