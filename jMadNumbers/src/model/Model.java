@@ -34,8 +34,6 @@ public class Model
         return AI.MinMaxDecision(board, playerScore, aiScore);
 	}
 	
-	//TODO add generation of GameOverEvent
-	
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)
 	{
 		this.aiTurn = AIturn;

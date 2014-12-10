@@ -86,7 +86,7 @@ public class GameBoard
         for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             {
-                if (mock[xCurrent][yCurrent].equals(true))      //TODO is mock in model generated properly?
+                if (mock[xCurrent][yCurrent].equals(true))
                     boardButtons[xCurrent][yCurrent].setActive();
                 else
                     boardButtons[xCurrent][yCurrent].setInactive();

@@ -17,9 +17,6 @@ public class AITurnEvent extends BoardEvent
     public void process(final View view, final Model model)
     {
         position = model.getAIDecision();
-        //TODO remove this debug code
-        System.out.println(position.x);
-        System.out.println(position.y);
         
         model.clickBoardItem(position.x, position.y, isAiTurn);
         view.setPointsMock(model.getPointsMock());
