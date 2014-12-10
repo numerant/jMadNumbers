@@ -26,6 +26,10 @@ public class MainMenu
     private JMenuItem difficulyMediumItem;
     private JMenuItem difficulyHardItem;
     private JMenuItem difficulyVeryHardItem;
+    private JMenu predefinedLevelsMenu;
+    private JMenuItem difficulyNoviceItem;
+    private JMenuItem difficulyMasterItem;
+    private JMenuItem difficulyLegendaryItem;
     private JMenuItem quitMenuItem;
     private JMenu helpMenu;
     private JMenuItem howToPlayMenuItem;
@@ -97,6 +101,38 @@ public class MainMenu
         });
         newGameMenu.add(difficulyVeryHardItem);
         
+        predefinedLevelsMenu = new JMenu("Predefined levels");
+        gameMenu.add(predefinedLevelsMenu);
+        
+        difficulyNoviceItem = new JMenuItem("Novice");
+        difficulyNoviceItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("novice"));
+            }
+        });
+        predefinedLevelsMenu.add(difficulyNoviceItem);
+        
+        difficulyMasterItem = new JMenuItem("Master");
+        difficulyMasterItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("master"));
+            }
+        });
+        predefinedLevelsMenu.add(difficulyMasterItem);
+        
+        difficulyLegendaryItem = new JMenuItem("Legendary");
+        difficulyLegendaryItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("legendary"));
+            }
+        });
+        predefinedLevelsMenu.add(difficulyLegendaryItem);
         
         quitMenuItem = new JMenuItem("Quit");
         quitMenuItem.addActionListener(new ActionListener()

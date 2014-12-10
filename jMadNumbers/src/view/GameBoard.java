@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import events.AITurnEvent;
 import events.ButtonClickEvent;
 import events.GameOverEvent;
 import view.BoardButton;

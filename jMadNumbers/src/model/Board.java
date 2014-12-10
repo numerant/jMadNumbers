@@ -119,13 +119,13 @@ private void fillBoard(Integer values[][])
 		{
 			for(Integer j = 0; j < size; j++)
 			{
-				if(values[i][j] > 0)
+			    if(values[i][j] > 0)
 				{
-					new BoardItem(Math.abs(values[i][j]), true);
+					board[i][j] = new BoardItem(Math.abs(values[i][j]), true);
 				}
 				else
 				{
-					new BoardItem(Math.abs(values[i][j]), false);
+				    board[i][j] = new BoardItem(Math.abs(values[i][j]), false);
 				}
 				pointsMock[i][j] = board[i][j].getNumber();
 				visibilityMock[i][j] = board[i][j].getVisible();
