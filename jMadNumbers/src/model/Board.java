@@ -52,54 +52,51 @@ public class Board implements Cloneable
 	
 	private void generateNoviceBoard()
 	{
-		this.size = 12;
-		board = new BoardItem[size][size];
+		Integer values[][] = 	{	{9,-3,10,2,-2,-1,8,-5	},
+														{-7,10,2,-10,3,-7,7,4	},
+														{3,-11,6,-9,10,-5,11,2},
+														{4,3,-4,7,-11,4,8,-10	},
+														{10,-11,4,-5,9,-5,8,2	},
+														{-6,2,4,-8,9,-9,-5,-3	},
+														{2,-3,9,11,10,-3,-2,-5},
+														{2,9,-5,9,-8,-1,-1,-9	} };
 		
-		pointsMock = new Integer[size][size];
-		visibilityMock = new Boolean[size][size];
-		activityMock = new Boolean[size][size];
-		
-		
-		
-		
-		for(Integer i = 0; i < size; ++i)
-		{
-			for(Integer j = 0; j < size; j++)
-			{
-				board[i][j] = new BoardItem(size);
-				pointsMock[i][j] = board[i][j].getNumber();
-				visibilityMock[i][j] = board[i][j].getVisible();
-				activityMock[i][j] = board[i][j].getActive();
-			}
-		}	
-		this.setRowActive(size/2);
+		this.size = 8;
+		this.fillBoard(values);
 	}
 	
 	private void generateMasterBoard()
 	{
-		this.size = 16;
-		board = new BoardItem[size][size];
+		Integer values[][] = 	{	{9,-3,10,2,-2,-1,8,-5	},
+														{-7,10,2,-10,3,-7,7,4	},
+														{3,-11,6,-9,10,-5,11,2},
+														{4,3,-4,7,-11,4,8,-10	},
+														{10,-11,4,-5,9,-5,8,2	},
+														{-6,2,4,-8,9,-9,-5,-3	},
+														{2,-3,9,11,10,-3,-2,-5},
+														{2,9,-5,9,-8,-1,-1,-9	} };
 		
-		pointsMock = new Integer[size][size];
-		visibilityMock = new Boolean[size][size];
-		activityMock = new Boolean[size][size];
-		
-		for(Integer i = 0; i < size; ++i)
-		{
-			for(Integer j = 0; j < size; j++)
-			{
-				board[i][j] = new BoardItem(size);
-				pointsMock[i][j] = board[i][j].getNumber();
-				visibilityMock[i][j] = board[i][j].getVisible();
-				activityMock[i][j] = board[i][j].getActive();
-			}
-		}	
-		this.setRowActive(size/2);
+		this.size = 12;
+		this.fillBoard(values);
 	}
 	
 	private void generateLegendaryBoard()
 	{
-		this.size = size;
+		Integer values[][] = 	{	{9,-3,10,2,-2,-1,8,-5	},
+														{-7,10,2,-10,3,-7,7,4	},
+														{3,-11,6,-9,10,-5,11,2},
+														{4,3,-4,7,-11,4,8,-10	},
+														{10,-11,4,-5,9,-5,8,2	},
+														{-6,2,4,-8,9,-9,-5,-3	},
+														{2,-3,9,11,10,-3,-2,-5},
+														{2,9,-5,9,-8,-1,-1,-9	} };
+		
+		this.size = 16;
+		this.fillBoard(values);
+	}
+	
+private void fillBoard(Integer values[][])
+	{
 		board = new BoardItem[size][size];
 		
 		pointsMock = new Integer[size][size];
@@ -110,7 +107,14 @@ public class Board implements Cloneable
 		{
 			for(Integer j = 0; j < size; j++)
 			{
-				board[i][j] = new BoardItem(size);
+				if(values[i][j] > 0)
+				{
+					new BoardItem(Math.abs(values[i][j]), true);
+				}
+				else
+				{
+					new BoardItem(Math.abs(values[i][j]), false);
+				}
 				pointsMock[i][j] = board[i][j].getNumber();
 				visibilityMock[i][j] = board[i][j].getVisible();
 				activityMock[i][j] = board[i][j].getActive();
@@ -118,7 +122,6 @@ public class Board implements Cloneable
 		}	
 		this.setRowActive(size/2);
 	}
-	
 	
 	
 	private Integer[][] copy(Integer[][] input)
