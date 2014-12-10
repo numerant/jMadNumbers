@@ -42,6 +42,13 @@ public class Model
 		playerScore = 0;
 		aiScore = 0;
 	}
+
+	public void generateLegendaryBoard()
+	{
+		board = new Board("legendary");
+		playerScore = 0;
+		aiScore = 0;
+	}
 	
 	public Point getAIDecision()
 	{
