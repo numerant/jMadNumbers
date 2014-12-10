@@ -14,6 +14,7 @@ public class GenerateBoardEvent extends BoardEvent
     public GenerateBoardEvent(Integer size)
     {
         this.size = size;
+        this.difficultyLevel = "";
     }
     
     public GenerateBoardEvent(String difficultyLevel)

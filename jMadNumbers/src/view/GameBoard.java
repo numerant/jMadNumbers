@@ -49,8 +49,8 @@ public class GameBoard
         
         boardButtons = new BoardButton[boardSize][boardSize];
         
-        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+        for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             {
                 final BoardButton newButton = new BoardButton("");
                 newButton.setPreferredSize(new Dimension(BUTTON_SIZE_PX, BUTTON_SIZE_PX));
@@ -82,8 +82,8 @@ public class GameBoard
      */
     public void updateActivityFromMock(Boolean[][] mock)
     {
-        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+        for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             {
                 if (mock[xCurrent][yCurrent].equals(true))
                     boardButtons[xCurrent][yCurrent].setActive();
@@ -98,8 +98,8 @@ public class GameBoard
      */
     public void updateVisibilityFromMock(Boolean[][] mock)
     {
-        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+        for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             {
                 if (mock[xCurrent][yCurrent].equals(true))
                     boardButtons[xCurrent][yCurrent].setVisible(true);
@@ -116,8 +116,8 @@ public class GameBoard
      */
     public Boolean checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
     {
-        for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
-            for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+        for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
+            for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
             {
                 if (activityMock[xCurrent][yCurrent].equals(true) && (visibilityMock[xCurrent][yCurrent].equals(true)))
                 {
