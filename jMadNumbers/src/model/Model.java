@@ -73,4 +73,13 @@ public class Model
 	{
 		return board.getActivityMock();
 	}
+	
+	public Integer getAiScore()
+	{
+	    return aiScore;
+	}
+	public Integer getPlayerScore()
+	{
+	    return playerScore;
+	}
 }

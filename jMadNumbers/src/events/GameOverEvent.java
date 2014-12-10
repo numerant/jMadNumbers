@@ -8,21 +8,29 @@ import view.View;
  */
 public class GameOverEvent extends BoardEvent
 {
-    private Integer moveCount;
+    private Integer aiScore;
+    private Integer playerScore;
     
-    public GameOverEvent (final Integer moveCount)
-    {
-        this.moveCount = moveCount;
-    }
+    private String message;
+    private String title;
     
     /**
      * Tell the view to create new message box
      */
-    //TODO replace messages
     public void process(View view, Model model)
     {
-        String message = "<html>You won this game!<br>Moves: " + moveCount.toString() +"</html>";
-        String title = "Congratulations!";
+        title = "Game over!";
+        
+        aiScore = model.getAiScore();
+        playerScore = model.getPlayerScore();
+        
+        if (playerScore > aiScore)
+            message = "<html>You won!<br>Your score: " + playerScore.toString() + "<br>AI score: " + aiScore.toString() + "</html>";
+        else if (playerScore.equals(aiScore))
+            message = "<html>It's a draw!<br>Your score: " + playerScore.toString() + "<br>AI score: " + aiScore.toString() + "</html>";
+        else
+            message = "<html>You lost!<br>Your score: " + playerScore.toString() + "<br>AI score: " + aiScore.toString() + "</html>";
+        
 
         view.showMessage(message, title);
         view.hideMazePanel();

@@ -125,7 +125,7 @@ public class GameBoard
                     return false;
                 }
             }
-        view.sendBoardEvent(new GameOverEvent(0));
+        view.sendBoardEvent(new GameOverEvent());
         return true;
         
     }
