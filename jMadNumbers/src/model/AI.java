@@ -23,7 +23,7 @@ public class AI
 		
     	for (Point move : state.listMoves())
     	{
-    		Integer currentValue = MinValue(state.makeMove(move), 8, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    		Integer currentValue = MinValue(state.makeMove(move), 5, Integer.MIN_VALUE, Integer.MAX_VALUE);
     		if (currentValue > maxValue)
     		{
     			maxValue = currentValue;
@@ -45,7 +45,7 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), depth-1, alpha, beta));
+    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), 0, alpha, beta));
     		if (maxValue > beta)
     		{
     			return maxValue;
