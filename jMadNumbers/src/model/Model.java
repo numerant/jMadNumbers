@@ -52,7 +52,7 @@ public class Model
 	
 	public Point getAIDecision()
 	{
-        return AI.MinMaxDecision(board, playerScore, aiScore);
+        return (new AIFactory()).getAI("stupid").GetDecision(board);
 	}
 	
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)

@@ -2,14 +2,77 @@ package model;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-/**
- *
- */
+interface AI {
+	Integer MINMAX_DEPTH = 5;
+	public Point GetDecision(Board board);
+}
 
-public class AI
+public class AIFactory {
+	public AI getAI(String id) {
+		switch (id) {
+		
+			case "minmax":
+				return new MinMaxAI();
+			
+			case "stupid":
+				return new StupidAI();
+		
+			case "greedy":
+				return new GreedyAI();
+			
+		}
+		return null;
+	}
+}
+
+class GreedyAI implements AI {
+	public Point GetDecision(Board board) {
+		GameState state = new GameState(board, 0, 0, true);
+		Integer maxValue = Integer.MIN_VALUE;
+		Point maxArgument = null;
+
+		if (state.isGameOver())
+		{
+			throw new RuntimeException("GetDecision called for game over!");
+		}
+		
+    	for (Point move : state.listMoves())
+    	{
+    		Integer currentValue = board.getPoints((int) move.getX(), (int) move.getY());
+    		if (currentValue > maxValue)
+    		{
+    			maxValue = currentValue;
+    			maxArgument = move;
+    		}
+    	}
+    	
+    	return maxArgument;
+	}
+}
+
+class StupidAI implements AI{
+	public Point GetDecision(Board board) {
+		GameState state = new GameState(board, 0, 0, true);
+		if (state.isGameOver())
+		{
+			throw new RuntimeException("GetDecision called for game over!");
+		}
+		
+		List<Point> moves = state.listMoves();
+		Collections.shuffle(moves);
+		return moves.get(0);
+	}
+}
+
+class MinMaxAI implements AI
 {
+	public Point GetDecision(Board board) {
+		return MinMaxDecision(board, 0, 0);
+	}
+	
 	static public Point MinMaxDecision(Board board, Integer playerScore, Integer AIScore)
 	{
 		GameState state = new GameState(board, playerScore, AIScore, true);
@@ -18,12 +81,12 @@ public class AI
 
 		if (state.isGameOver())
 		{
-			throw new RuntimeException("MinMaxCalled for game over!");
+			throw new RuntimeException("GetDecision called for game over!");
 		}
 		
     	for (Point move : state.listMoves())
     	{
-    		Integer currentValue = MinValue(state.makeMove(move), 5, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    		Integer currentValue = MinValue(state.makeMove(move), AI.MINMAX_DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE);
     		if (currentValue > maxValue)
     		{
     			maxValue = currentValue;
@@ -45,7 +108,7 @@ public class AI
     	
     	for (Point move : state.listMoves())
     	{
-    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), 0, alpha, beta));
+    		maxValue = Math.max(maxValue, MinValue(state.makeMove(move), depth-1, alpha, beta));
     		if (maxValue > beta)
     		{
     			return maxValue;
