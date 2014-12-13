@@ -15,6 +15,7 @@ public class Model
 	private Integer playerScore;
 	private Integer aiScore;
 	private Boolean aiTurn;
+	private String aiType = "minmax";
 	
 	public Model(final View view)
 	{
@@ -52,7 +53,17 @@ public class Model
 	
 	public Point getAIDecision()
 	{
-        return (new AIFactory()).getAI("stupid").GetDecision(board);
+        if (aiType.equals("minmax"))
+	        return (new AIFactory()).getAI("minmax").GetDecision(board);
+        else if (aiType.equals("greedy"))
+            return (new AIFactory()).getAI("greedy").GetDecision(board);
+        else 
+            return (new AIFactory()).getAI("stupid").GetDecision(board);
+	}
+	
+	public void setAIType(final String aiType)
+	{
+	    this.aiType = aiType;
 	}
 	
 	public void clickBoardItem(Integer x, Integer y, Boolean AIturn)

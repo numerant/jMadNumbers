@@ -147,12 +147,12 @@ public class MainMenu
         
         aiTypeGroup = new ButtonGroup();
         
-        minMaxAiItem = new JRadioButtonMenuItem("MinMax");
+        minMaxAiItem = new JRadioButtonMenuItem("MinMax", true);
         minMaxAiItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent arg0)
             {
-                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+                view.sendBoardEvent(new AITypeChangeEvent("minmax"));
             }
         });
         aiTypeMenu.add(minMaxAiItem);
@@ -163,7 +163,7 @@ public class MainMenu
         {
             public void actionPerformed(ActionEvent arg0)
             {
-                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+                view.sendBoardEvent(new AITypeChangeEvent("greedy"));
             }
         });
         aiTypeMenu.add(greedyAiItem);
@@ -174,7 +174,7 @@ public class MainMenu
         {
             public void actionPerformed(ActionEvent arg0)
             {
-                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+                view.sendBoardEvent(new AITypeChangeEvent("stupid"));
             }
         });
         aiTypeMenu.add(stupidAiItem);
