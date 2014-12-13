@@ -4,9 +4,11 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
 import events.*;
 
@@ -30,6 +32,11 @@ public class MainMenu
     private JMenuItem difficulyNoviceItem;
     private JMenuItem difficulyMasterItem;
     private JMenuItem difficulyLegendaryItem;
+    private JMenu aiTypeMenu;
+    private ButtonGroup aiTypeGroup;
+    private JRadioButtonMenuItem minMaxAiItem;
+    private JRadioButtonMenuItem greedyAiItem;
+    private JRadioButtonMenuItem stupidAiItem;
     private JMenuItem quitMenuItem;
     private JMenu helpMenu;
     private JMenuItem howToPlayMenuItem;
@@ -133,6 +140,47 @@ public class MainMenu
             }
         });
         predefinedLevelsMenu.add(difficulyLegendaryItem);
+        
+        
+        aiTypeMenu = new JMenu("AI type");
+        gameMenu.add(aiTypeMenu);
+        
+        aiTypeGroup = new ButtonGroup();
+        
+        minMaxAiItem = new JRadioButtonMenuItem("MinMax");
+        minMaxAiItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+            }
+        });
+        aiTypeMenu.add(minMaxAiItem);
+        aiTypeGroup.add(minMaxAiItem);
+        
+        greedyAiItem = new JRadioButtonMenuItem("Greedy");
+        greedyAiItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+            }
+        });
+        aiTypeMenu.add(greedyAiItem);
+        aiTypeGroup.add(greedyAiItem);
+        
+        stupidAiItem = new JRadioButtonMenuItem("Stupid");
+        stupidAiItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                view.sendBoardEvent(new GenerateBoardEvent("legendary"));  //TODO change generated event
+            }
+        });
+        aiTypeMenu.add(stupidAiItem);
+        aiTypeGroup.add(stupidAiItem);
+        
+        
         
         quitMenuItem = new JMenuItem("Quit");
         quitMenuItem.addActionListener(new ActionListener()
