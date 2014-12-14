@@ -276,4 +276,18 @@ public class View
             }
         });
     }
+    
+    /**
+     * Wrapper method for showing AI duel options dialog.
+     */
+    public void showAiDuelOptionsWindow()
+    {
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run() 
+            {
+                new AiDuelOptionsWindow(frame);
+            }
+        });
+    }
 }

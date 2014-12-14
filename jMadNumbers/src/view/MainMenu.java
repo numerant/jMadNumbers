@@ -37,6 +37,7 @@ public class MainMenu
     private JRadioButtonMenuItem minMaxAiItem;
     private JRadioButtonMenuItem greedyAiItem;
     private JRadioButtonMenuItem stupidAiItem;
+    private JMenuItem aiDuelItem;
     private JMenuItem quitMenuItem;
     private JMenu helpMenu;
     private JMenuItem howToPlayMenuItem;
@@ -180,7 +181,15 @@ public class MainMenu
         aiTypeMenu.add(stupidAiItem);
         aiTypeGroup.add(stupidAiItem);
         
-        
+        aiDuelItem = new JMenuItem("AI duels");
+        aiDuelItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent event)
+            {
+                view.sendBoardEvent(new ShowAiDuelOptionsEvent());
+            }
+        });        
+        gameMenu.add(aiDuelItem);
         
         quitMenuItem = new JMenuItem("Quit");
         quitMenuItem.addActionListener(new ActionListener()
