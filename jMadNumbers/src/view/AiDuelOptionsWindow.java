@@ -10,7 +10,6 @@ import javax.swing.JRadioButton;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,29 +68,27 @@ public class AiDuelOptionsWindow extends JDialog
      */
     private void createDialog() 
     {
-        setSize(275, 200);
+        setSize(250, 200);
+        //setResizable(false);
         
         setTitle("AI duel");
+        
+        /*
+         * First AI panel
+         */
         aiFirstTypePanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         getContentPane().add(aiFirstTypePanel, BorderLayout.WEST);
         GridBagLayout gbl_aiFirstTypePanel = new GridBagLayout();
-        gbl_aiFirstTypePanel.columnWeights = new double[]{0.0};
-        gbl_aiFirstTypePanel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
         aiFirstTypePanel.setLayout(gbl_aiFirstTypePanel);
         
         JLabel aiFirstTypeLabel = new JLabel("AI 1 type:");
         GridBagConstraints gbc_aiFirstTypeLabel = new GridBagConstraints();
-        gbc_aiFirstTypeLabel.fill = GridBagConstraints.BOTH;
-        gbc_aiFirstTypeLabel.anchor = GridBagConstraints.WEST;
-        gbc_aiFirstTypeLabel.insets = new Insets(0, 0, 5, 0);
         gbc_aiFirstTypeLabel.gridx = 0;
         gbc_aiFirstTypeLabel.gridy = 0;
         aiFirstTypePanel.add(aiFirstTypeLabel, gbc_aiFirstTypeLabel);
         
         Component aiFirstPanelTopStrut = Box.createVerticalStrut(20);
         GridBagConstraints gbc_aiFirstPanelTopStrut = new GridBagConstraints();
-        gbc_aiFirstPanelTopStrut.anchor = GridBagConstraints.NORTH;
-        gbc_aiFirstPanelTopStrut.insets = new Insets(0, 0, 5, 0);
         gbc_aiFirstPanelTopStrut.gridx = 0;
         gbc_aiFirstPanelTopStrut.gridy = 1;
         aiFirstTypePanel.add(aiFirstPanelTopStrut, gbc_aiFirstPanelTopStrut);
@@ -108,7 +105,6 @@ public class AiDuelOptionsWindow extends JDialog
         aiFirstTypeButtonGroup.add(aiFirstMinMaxRadioButton);
         GridBagConstraints gbc_aiFirstMinMaxRadioButton = new GridBagConstraints();
         gbc_aiFirstMinMaxRadioButton.anchor = GridBagConstraints.NORTHWEST;
-        gbc_aiFirstMinMaxRadioButton.insets = new Insets(0, 0, 5, 0);
         gbc_aiFirstMinMaxRadioButton.gridx = 0;
         gbc_aiFirstMinMaxRadioButton.gridy = 2;
         aiFirstTypePanel.add(aiFirstMinMaxRadioButton, gbc_aiFirstMinMaxRadioButton);
@@ -124,7 +120,6 @@ public class AiDuelOptionsWindow extends JDialog
         aiFirstTypeButtonGroup.add(aiFirstGreedyRadioButton);
         GridBagConstraints gbc_aiFirstGreedyRadioButton = new GridBagConstraints();
         gbc_aiFirstGreedyRadioButton.anchor = GridBagConstraints.NORTHWEST;
-        gbc_aiFirstGreedyRadioButton.insets = new Insets(0, 0, 5, 0);
         gbc_aiFirstGreedyRadioButton.gridx = 0;
         gbc_aiFirstGreedyRadioButton.gridy = 3;
         aiFirstTypePanel.add(aiFirstGreedyRadioButton, gbc_aiFirstGreedyRadioButton);
@@ -139,7 +134,6 @@ public class AiDuelOptionsWindow extends JDialog
         });
         aiFirstTypeButtonGroup.add(aiFirstStupidRadioButton);
         GridBagConstraints gbc_aiFirstStupidRadioButton = new GridBagConstraints();
-        gbc_aiFirstStupidRadioButton.insets = new Insets(0, 0, 5, 0);
         gbc_aiFirstStupidRadioButton.anchor = GridBagConstraints.NORTHWEST;
         gbc_aiFirstStupidRadioButton.gridx = 0;
         gbc_aiFirstStupidRadioButton.gridy = 4;
@@ -147,11 +141,87 @@ public class AiDuelOptionsWindow extends JDialog
         
         Component aiFirstPanelBottomStrut = Box.createVerticalStrut(20);
         GridBagConstraints gbc_aiFirstPanelBottomStrut = new GridBagConstraints();
-        gbc_aiFirstPanelBottomStrut.fill = GridBagConstraints.VERTICAL;
         gbc_aiFirstPanelBottomStrut.gridx = 0;
         gbc_aiFirstPanelBottomStrut.gridy = 5;
         aiFirstTypePanel.add(aiFirstPanelBottomStrut, gbc_aiFirstPanelBottomStrut);
         
+        
+        /*
+         * Second AI panel
+         */
+        JPanel aiSecondPanel = new JPanel();
+        aiSecondPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+        getContentPane().add(aiSecondPanel, BorderLayout.CENTER);
+        GridBagLayout gbl_aiSecondPanel = new GridBagLayout();
+        aiSecondPanel.setLayout(gbl_aiSecondPanel);
+        
+        JLabel aiSecondTypeLabel = new JLabel("AI 2 type:");
+        GridBagConstraints gbc_aiSecondTypeLabel = new GridBagConstraints();
+        gbc_aiSecondTypeLabel.gridx = 0;
+        gbc_aiSecondTypeLabel.gridy = 0;
+        aiSecondPanel.add(aiSecondTypeLabel, gbc_aiSecondTypeLabel);
+        
+        Component aiSecondPanelTopStrut = Box.createVerticalStrut(20);
+        GridBagConstraints gbc_aiSecondPanelTopStrut = new GridBagConstraints();
+        gbc_aiSecondPanelTopStrut.gridx = 0;
+        gbc_aiSecondPanelTopStrut.gridy = 1;
+        aiSecondPanel.add(aiSecondPanelTopStrut, gbc_aiSecondPanelTopStrut);
+        
+        JRadioButton aiSecondMinMaxRadioButton = new JRadioButton("MinMax");
+        aiSecondMinMaxRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "minmax";
+            }
+        });
+        aiSecondMinMaxRadioButton.setSelected(true);
+        aiSecondTypeButtonGroup.add(aiSecondMinMaxRadioButton);
+        GridBagConstraints gbc_aiSecondMinMaxRadioButton = new GridBagConstraints();
+        gbc_aiSecondMinMaxRadioButton.gridx = 0;
+        gbc_aiSecondMinMaxRadioButton.gridy = 2;
+        aiSecondPanel.add(aiSecondMinMaxRadioButton, gbc_aiSecondMinMaxRadioButton);
+        
+        JRadioButton aiSecondGreedyRadioButton = new JRadioButton("Greedy");
+        aiSecondGreedyRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "greedy";
+            }
+        });
+        aiSecondTypeButtonGroup.add(aiSecondGreedyRadioButton);
+        GridBagConstraints gbc_aiSecondGreedyRadioButton = new GridBagConstraints();
+        gbc_aiSecondGreedyRadioButton.anchor = GridBagConstraints.WEST;
+        gbc_aiSecondGreedyRadioButton.gridx = 0;
+        gbc_aiSecondGreedyRadioButton.gridy = 3;
+        aiSecondPanel.add(aiSecondGreedyRadioButton, gbc_aiSecondGreedyRadioButton);
+        
+        JRadioButton aiSecondStupidRadioButton = new JRadioButton("Stupid");
+        aiSecondStupidRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "stupid";
+            }
+        });
+        aiSecondTypeButtonGroup.add(aiSecondStupidRadioButton);
+        GridBagConstraints gbc_aiSecondStupidRadioButton = new GridBagConstraints();
+        gbc_aiSecondStupidRadioButton.anchor = GridBagConstraints.WEST;
+        gbc_aiSecondStupidRadioButton.gridx = 0;
+        gbc_aiSecondStupidRadioButton.gridy = 4;
+        aiSecondPanel.add(aiSecondStupidRadioButton, gbc_aiSecondStupidRadioButton);
+        
+        Component aiSecondPanelBottomStrut = Box.createVerticalStrut(20);
+        GridBagConstraints gbc_aiSecondPanelBottomStrut = new GridBagConstraints();
+        gbc_aiSecondPanelBottomStrut.gridx = 0;
+        gbc_aiSecondPanelBottomStrut.gridy = 5;
+        aiSecondPanel.add(aiSecondPanelBottomStrut, gbc_aiSecondPanelBottomStrut);
+        
+
+        /*
+         * Difficulty level panel
+         */
         JPanel levelDifficultyPanel = new JPanel();
         levelDifficultyPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         getContentPane().add(levelDifficultyPanel, BorderLayout.EAST);
@@ -162,16 +232,12 @@ public class AiDuelOptionsWindow extends JDialog
         
         JLabel levelDifficultyLabel = new JLabel("Level difficulty");
         GridBagConstraints gbc_levelDifficultyLabel = new GridBagConstraints();
-        gbc_levelDifficultyLabel.fill = GridBagConstraints.BOTH;
-        gbc_levelDifficultyLabel.insets = new Insets(0, 0, 5, 0);
-        gbc_levelDifficultyLabel.anchor = GridBagConstraints.NORTHWEST;
         gbc_levelDifficultyLabel.gridx = 0;
         gbc_levelDifficultyLabel.gridy = 0;
         levelDifficultyPanel.add(levelDifficultyLabel, gbc_levelDifficultyLabel);
         
         Component difficultyPanelTopStrut = Box.createVerticalStrut(20);
         GridBagConstraints gbc_difficultyPanelTopStrut = new GridBagConstraints();
-        gbc_difficultyPanelTopStrut.insets = new Insets(0, 0, 5, 0);
         gbc_difficultyPanelTopStrut.gridx = 0;
         gbc_difficultyPanelTopStrut.gridy = 1;
         levelDifficultyPanel.add(difficultyPanelTopStrut, gbc_difficultyPanelTopStrut);
@@ -187,7 +253,6 @@ public class AiDuelOptionsWindow extends JDialog
         difficultyEasyButton.setSelected(true);
         difficultyButtonGroup.add(difficultyEasyButton);
         GridBagConstraints gbc_difficultyEasyButton = new GridBagConstraints();
-        gbc_difficultyEasyButton.insets = new Insets(0, 0, 5, 0);
         gbc_difficultyEasyButton.gridx = 0;
         gbc_difficultyEasyButton.gridy = 2;
         gbc_difficultyEasyButton.anchor = GridBagConstraints.NORTHWEST;
@@ -204,7 +269,6 @@ public class AiDuelOptionsWindow extends JDialog
         difficultyButtonGroup.add(difficultyMediumButton);
         GridBagConstraints gbc_difficultyMediumButton = new GridBagConstraints();
         gbc_difficultyMediumButton.anchor = GridBagConstraints.NORTHWEST;
-        gbc_difficultyMediumButton.insets = new Insets(0, 0, 5, 0);
         gbc_difficultyMediumButton.gridx = 0;
         gbc_difficultyMediumButton.gridy = 3;
         levelDifficultyPanel.add(difficultyMediumButton, gbc_difficultyMediumButton);
@@ -220,7 +284,6 @@ public class AiDuelOptionsWindow extends JDialog
         difficultyButtonGroup.add(difficultyHardButton);
         GridBagConstraints gbc_difficultyHardButton = new GridBagConstraints();
         gbc_difficultyHardButton.anchor = GridBagConstraints.NORTHWEST;
-        gbc_difficultyHardButton.insets = new Insets(0, 0, 5, 0);
         gbc_difficultyHardButton.gridx = 0;
         gbc_difficultyHardButton.gridy = 4;
         levelDifficultyPanel.add(difficultyHardButton, gbc_difficultyHardButton);
@@ -236,7 +299,6 @@ public class AiDuelOptionsWindow extends JDialog
         difficultyButtonGroup.add(difficultyVeryHardButton);
         GridBagConstraints gbc_difficultyVeryHardButton = new GridBagConstraints();
         gbc_difficultyVeryHardButton.anchor = GridBagConstraints.NORTHWEST;
-        gbc_difficultyVeryHardButton.insets = new Insets(0, 0, 5, 0);
         gbc_difficultyVeryHardButton.gridx = 0;
         gbc_difficultyVeryHardButton.gridy = 5;
         levelDifficultyPanel.add(difficultyVeryHardButton, gbc_difficultyVeryHardButton);
@@ -246,88 +308,11 @@ public class AiDuelOptionsWindow extends JDialog
         gbc_difficultyPanelBottomStrut.gridx = 0;
         gbc_difficultyPanelBottomStrut.gridy = 6;
         levelDifficultyPanel.add(difficultyPanelBottomStrut, gbc_difficultyPanelBottomStrut);
+
         
-        JPanel aiSecondPanel = new JPanel();
-        aiSecondPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-        getContentPane().add(aiSecondPanel, BorderLayout.CENTER);
-        GridBagLayout gbl_aiSecondPanel = new GridBagLayout();
-        gbl_aiSecondPanel.columnWidths = new int[] {0};
-        gbl_aiSecondPanel.columnWeights = new double[]{1.0};
-        gbl_aiSecondPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
-        aiSecondPanel.setLayout(gbl_aiSecondPanel);
-        
-        JLabel aiSecondTypeLabel = new JLabel("AI 2 type:");
-        GridBagConstraints gbc_aiSecondTypeLabel = new GridBagConstraints();
-        gbc_aiSecondTypeLabel.fill = GridBagConstraints.BOTH;
-        gbc_aiSecondTypeLabel.anchor = GridBagConstraints.WEST;
-        gbc_aiSecondTypeLabel.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondTypeLabel.gridx = 0;
-        gbc_aiSecondTypeLabel.gridy = 0;
-        aiSecondPanel.add(aiSecondTypeLabel, gbc_aiSecondTypeLabel);
-        
-        Component aiSecondPanelTopStrut = Box.createVerticalStrut(20);
-        GridBagConstraints gbc_aiSecondPanelTopStrut = new GridBagConstraints();
-        gbc_aiSecondPanelTopStrut.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondPanelTopStrut.gridx = 0;
-        gbc_aiSecondPanelTopStrut.gridy = 1;
-        aiSecondPanel.add(aiSecondPanelTopStrut, gbc_aiSecondPanelTopStrut);
-        
-        JRadioButton aiSecondMinMaxRadioButton = new JRadioButton("MinMax");
-        aiSecondMinMaxRadioButton.addActionListener(new ActionListener()
-        {                 
-            public void actionPerformed(ActionEvent event)
-            {
-                aiSecondType = "minmax";
-            }
-        });
-        aiSecondMinMaxRadioButton.setSelected(true);
-        aiSecondTypeButtonGroup.add(aiSecondMinMaxRadioButton);
-        GridBagConstraints gbc_aiSecondMinMaxRadioButton = new GridBagConstraints();
-        gbc_aiSecondMinMaxRadioButton.fill = GridBagConstraints.HORIZONTAL;
-        gbc_aiSecondMinMaxRadioButton.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondMinMaxRadioButton.gridx = 0;
-        gbc_aiSecondMinMaxRadioButton.gridy = 2;
-        aiSecondPanel.add(aiSecondMinMaxRadioButton, gbc_aiSecondMinMaxRadioButton);
-        
-        JRadioButton aiSecondGreedyRadioButton = new JRadioButton("Greedy");
-        aiSecondGreedyRadioButton.addActionListener(new ActionListener()
-        {                 
-            public void actionPerformed(ActionEvent event)
-            {
-                aiSecondType = "greedy";
-            }
-        });
-        aiSecondTypeButtonGroup.add(aiSecondGreedyRadioButton);
-        GridBagConstraints gbc_aiSecondGreedyRadioButton = new GridBagConstraints();
-        gbc_aiSecondGreedyRadioButton.anchor = GridBagConstraints.WEST;
-        gbc_aiSecondGreedyRadioButton.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondGreedyRadioButton.gridx = 0;
-        gbc_aiSecondGreedyRadioButton.gridy = 3;
-        aiSecondPanel.add(aiSecondGreedyRadioButton, gbc_aiSecondGreedyRadioButton);
-        
-        JRadioButton aiSecondStupidRadioButton = new JRadioButton("Stupid");
-        aiSecondStupidRadioButton.addActionListener(new ActionListener()
-        {                 
-            public void actionPerformed(ActionEvent event)
-            {
-                aiSecondType = "stupid";
-            }
-        });
-        aiSecondTypeButtonGroup.add(aiSecondStupidRadioButton);
-        GridBagConstraints gbc_aiSecondStupidRadioButton = new GridBagConstraints();
-        gbc_aiSecondStupidRadioButton.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondStupidRadioButton.anchor = GridBagConstraints.WEST;
-        gbc_aiSecondStupidRadioButton.gridx = 0;
-        gbc_aiSecondStupidRadioButton.gridy = 4;
-        aiSecondPanel.add(aiSecondStupidRadioButton, gbc_aiSecondStupidRadioButton);
-        
-        Component aiSecondPanelBottomStrut = Box.createVerticalStrut(20);
-        GridBagConstraints gbc_aiSecondPanelBottomStrut = new GridBagConstraints();
-        gbc_aiSecondPanelBottomStrut.insets = new Insets(0, 0, 5, 0);
-        gbc_aiSecondPanelBottomStrut.gridx = 0;
-        gbc_aiSecondPanelBottomStrut.gridy = 5;
-        aiSecondPanel.add(aiSecondPanelBottomStrut, gbc_aiSecondPanelBottomStrut);
-        
+        /*
+         * Bottom iteration panel
+         */
         JPanel iterationNumberPanel = new JPanel();
         getContentPane().add(iterationNumberPanel, BorderLayout.SOUTH);
         iterationNumberPanel.setLayout(new BorderLayout(0, 0));
@@ -335,13 +320,10 @@ public class AiDuelOptionsWindow extends JDialog
         JLabel iterationNumberLabel = new JLabel("Number of iterations:");
         iterationNumberPanel.add(iterationNumberLabel, BorderLayout.WEST);
         
-
-        
         final JSpinner iterationCountSpinner = new JSpinner();
         iterationCountSpinner.setModel(new SpinnerNumberModel(10, 1, 10000, 1));
         iterationNumberPanel.add(iterationCountSpinner, BorderLayout.CENTER);
 
-        
         JButton startAiDuels = new JButton("Start");
         startAiDuels.addActionListener(new ActionListener()
         {                 
