@@ -2,6 +2,8 @@ package model;
 
 import java.awt.Point;
 
+import view.AiDuelOptionsWindow;
+
 public class AIDuelSupporter
 {
     
@@ -10,6 +12,7 @@ public class AIDuelSupporter
     private Integer boardSize;
     private Integer iterationCount;
     private Model model;
+    private AiDuelOptionsWindow optionsWindow;
     
     private Point position;
     
@@ -22,9 +25,10 @@ public class AIDuelSupporter
     
     
     
-    public AIDuelSupporter(Model model)
+    public AIDuelSupporter(Model model, AiDuelOptionsWindow optionsWindow)
     {
         this.model = model;
+        this.optionsWindow = optionsWindow;
     }
     
     public final String getMessageForGUI()
@@ -86,6 +90,8 @@ public class AIDuelSupporter
         
         for(int currentIteration = 0; currentIteration < iterationCount; currentIteration++)
         {
+            optionsWindow.setProgress(currentIteration, iterationCount);
+            
             model.generateBoard(boardSize);
             
             /*
@@ -123,6 +129,7 @@ public class AIDuelSupporter
             
                 // save score difference (for variance)
             scoreDifferenceValues[currentIteration] = (aiFirstScore - aiSecondScore);
+            
             
             
         }

@@ -2,19 +2,24 @@ package view;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel; 
+
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -31,6 +36,7 @@ public class AiDuelOptionsWindow extends JDialog
     private final Integer DIFFICULTY_VERY_HARD_SIZE = 10;
     
     private final JPanel aiFirstTypePanel = new JPanel();
+    private final JProgressBar progressBar = new JProgressBar();
     private final ButtonGroup difficultyButtonGroup = new ButtonGroup();
     private final ButtonGroup aiSecondTypeButtonGroup = new ButtonGroup();
     private final ButtonGroup aiFirstTypeButtonGroup = new ButtonGroup();
@@ -47,6 +53,12 @@ public class AiDuelOptionsWindow extends JDialog
         this.view = view;
         createDialog();
         showDialog();
+    }
+    
+    public void setProgress (final Integer currentIteration, final Integer iterationCount)
+    {
+        progressBar.setMaximum(iterationCount);
+        progressBar.setValue(currentIteration);
     }
     
     /**
@@ -308,7 +320,7 @@ public class AiDuelOptionsWindow extends JDialog
          * Bottom iteration panel
          */
         JPanel iterationNumberPanel = new JPanel();
-        getContentPane().add(iterationNumberPanel, BorderLayout.SOUTH);
+        getContentPane().add(iterationNumberPanel, BorderLayout.NORTH);
         iterationNumberPanel.setLayout(new BorderLayout(0, 0));
         
         JLabel iterationNumberLabel = new JLabel("Number of iterations:");
@@ -319,16 +331,25 @@ public class AiDuelOptionsWindow extends JDialog
         iterationNumberPanel.add(iterationCountSpinner, BorderLayout.CENTER);
 
         JButton startAiDuels = new JButton("Start");
+        final AiDuelOptionsWindow window = this;
         startAiDuels.addActionListener(new ActionListener()
         {                 
+            
             public void actionPerformed(ActionEvent event)
             {
                 iterationCount = (Integer) iterationCountSpinner.getValue();
-                view.sendBoardEvent(new StartAIDuelEvent(aiFirstType, aiSecondType, boardSize, iterationCount));
+                view.sendBoardEvent(new StartAIDuelEvent(aiFirstType, aiSecondType, boardSize, iterationCount, window));
             }
         });
         iterationNumberPanel.add(startAiDuels, BorderLayout.EAST);
         
+        JPanel progressBarPanel = new JPanel();
+        getContentPane().add(progressBarPanel, BorderLayout.SOUTH);
+        progressBarPanel.setLayout(new BorderLayout(0, 0));
+        
+        progressBar.setValue(0);
+        progressBar.setStringPainted(true);
+        progressBarPanel.add(progressBar);
     }
 
 }
