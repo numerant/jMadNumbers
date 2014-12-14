@@ -2,18 +2,14 @@ package view;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel; 
-
 import java.awt.BorderLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ButtonGroup;
@@ -47,7 +43,7 @@ public class AiDuelOptionsWindow extends JDialog
     
     public AiDuelOptionsWindow(final JFrame mainWindow, View view)
     {
-        super(mainWindow, "AI duel", ModalityType.APPLICATION_MODAL);
+        super(mainWindow, "AI Duel", ModalityType.APPLICATION_MODAL);
         this.view = view;
         createDialog();
         showDialog();
@@ -70,8 +66,6 @@ public class AiDuelOptionsWindow extends JDialog
     {
         setSize(250, 200);
         //setResizable(false);
-        
-        setTitle("AI duel");
         
         /*
          * First AI panel

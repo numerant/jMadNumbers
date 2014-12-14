@@ -13,7 +13,7 @@ public class AIDuelSupporter
     
     private Point position;
     
-    private Double scoreDifferencesSum;
+    private Integer scoreDifferenceValues[];
     private Integer aiFirstWinCount;
     private Integer aiSecondWinCount;
     private Integer drawCount;
@@ -32,7 +32,30 @@ public class AIDuelSupporter
         return messageForGUI;
     }
     
-    public Boolean checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
+    private final Double getScoreDifferencesVariance()
+    {
+        Double averageScoreDifference = getAverageScoreDifference();
+        Double sum = 0.0;
+        
+        for (double scoreDifference : scoreDifferenceValues) {
+            sum += (scoreDifference-averageScoreDifference)*(scoreDifference-averageScoreDifference);
+         }
+        Double variance = sum/(scoreDifferenceValues.length-1);
+        
+        return variance;
+    }
+    
+    private final Double getAverageScoreDifference()
+    {
+        Double scoreDifferencesSum = 0.0;
+        for (Integer scoreDifference : scoreDifferenceValues)
+        {
+            scoreDifferencesSum += scoreDifference;
+        }
+        return (scoreDifferencesSum/iterationCount);
+    }
+    
+    private Boolean checkIfGameOver(final Boolean[][] activityMock, final Boolean[][] visibilityMock)
     {
         for (int xCurrent = 0; xCurrent < boardSize; xCurrent++)
             for (int yCurrent = 0; yCurrent < boardSize; yCurrent++)
@@ -56,12 +79,12 @@ public class AIDuelSupporter
     
     public void startTheWar()
     {
-        scoreDifferencesSum = 0.0;
+        scoreDifferenceValues = new Integer[iterationCount];
         aiFirstWinCount = 0;
         aiSecondWinCount = 0;
         drawCount = 0;
         
-        for(int i = 0; i < iterationCount; i++)
+        for(int currentIteration = 0; currentIteration < iterationCount; currentIteration++)
         {
             model.generateBoard(boardSize);
             
@@ -98,18 +121,21 @@ public class AIDuelSupporter
             else
                 drawCount++;
             
+                // save score difference (for variance)
+            scoreDifferenceValues[currentIteration] = (aiFirstScore - aiSecondScore);
             
-            scoreDifferencesSum += (aiFirstScore - aiSecondScore);
             
         }
+        
+        Double averageScoreDifference = getAverageScoreDifference();
+        Double scoreDifferencesVariance = getScoreDifferencesVariance();
         
         messageForGUI = "<html>Results:<br>AI 1 (" + aiFirstType + ") win count: " + aiFirstWinCount.toString() 
                 + "<br>AI 2 (" + aiSecondType + ") win count: " + aiSecondWinCount.toString() 
                 + "<br>Draw count: " + drawCount.toString()
-                + "<br> Average score difference: " + scoreDifferencesSum/iterationCount
+                + "<br> Average score difference: " + averageScoreDifference
+                + "<br> Variance of score differences: " + scoreDifferencesVariance
                 + "</html>";
-        
-        System.out.println( scoreDifferencesSum/iterationCount + " " + aiFirstWinCount + " " + aiSecondWinCount + " " + drawCount );
         
     }
     
