@@ -282,11 +282,12 @@ public class View
      */
     public void showAiDuelOptionsWindow()
     {
+        final View view = this;
         EventQueue.invokeLater(new Runnable()
         {
             public void run() 
             {
-                new AiDuelOptionsWindow(frame);
+                new AiDuelOptionsWindow(frame, view);
             }
         });
     }

@@ -2,13 +2,19 @@ package view;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel; 
+
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ButtonGroup;
@@ -17,17 +23,33 @@ import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import events.StartAIDuelEvent;
+
 public class AiDuelOptionsWindow extends JDialog
 {
     private static final long serialVersionUID = 181378790847582836L;
+    
+    /* How difficult are difficulty levels */
+    private final Integer DIFFICULTY_EASY_SIZE = 5;
+    private final Integer DIFFICULTY_MEDIUM_SIZE = 7;
+    private final Integer DIFFICULTY_HARD_SIZE = 8;
+    private final Integer DIFFICULTY_VERY_HARD_SIZE = 10;
+    
     private final JPanel aiFirstTypePanel = new JPanel();
     private final ButtonGroup difficultyButtonGroup = new ButtonGroup();
     private final ButtonGroup aiSecondTypeButtonGroup = new ButtonGroup();
     private final ButtonGroup aiFirstTypeButtonGroup = new ButtonGroup();
+    private View view;
     
-    public AiDuelOptionsWindow(final JFrame mainWindow)
+    private String aiFirstType = "minmax";
+    private String aiSecondType = "minmax";
+    private Integer boardSize = 5;
+    private Integer iterationCount = 10;
+    
+    public AiDuelOptionsWindow(final JFrame mainWindow, View view)
     {
         super(mainWindow, "AI duel", ModalityType.APPLICATION_MODAL);
+        this.view = view;
         createDialog();
         showDialog();
     }
@@ -76,6 +98,13 @@ public class AiDuelOptionsWindow extends JDialog
         
         JRadioButton aiFirstMinMaxRadioButton = new JRadioButton("MinMax");
         aiFirstMinMaxRadioButton.setSelected(true);
+        aiFirstMinMaxRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiFirstType = "minmax";
+            }
+        });
         aiFirstTypeButtonGroup.add(aiFirstMinMaxRadioButton);
         GridBagConstraints gbc_aiFirstMinMaxRadioButton = new GridBagConstraints();
         gbc_aiFirstMinMaxRadioButton.anchor = GridBagConstraints.NORTHWEST;
@@ -85,6 +114,13 @@ public class AiDuelOptionsWindow extends JDialog
         aiFirstTypePanel.add(aiFirstMinMaxRadioButton, gbc_aiFirstMinMaxRadioButton);
         
         JRadioButton aiFirstGreedyRadioButton = new JRadioButton("Greedy");
+        aiFirstGreedyRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiFirstType = "greedy";
+            }
+        });
         aiFirstTypeButtonGroup.add(aiFirstGreedyRadioButton);
         GridBagConstraints gbc_aiFirstGreedyRadioButton = new GridBagConstraints();
         gbc_aiFirstGreedyRadioButton.anchor = GridBagConstraints.NORTHWEST;
@@ -94,6 +130,13 @@ public class AiDuelOptionsWindow extends JDialog
         aiFirstTypePanel.add(aiFirstGreedyRadioButton, gbc_aiFirstGreedyRadioButton);
         
         JRadioButton aiFirstStupidRadioButton = new JRadioButton("Stupid");
+        aiFirstStupidRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiFirstType = "stupid";
+            }
+        });
         aiFirstTypeButtonGroup.add(aiFirstStupidRadioButton);
         GridBagConstraints gbc_aiFirstStupidRadioButton = new GridBagConstraints();
         gbc_aiFirstStupidRadioButton.insets = new Insets(0, 0, 5, 0);
@@ -134,6 +177,13 @@ public class AiDuelOptionsWindow extends JDialog
         levelDifficultyPanel.add(difficultyPanelTopStrut, gbc_difficultyPanelTopStrut);
         
         JRadioButton difficultyEasyButton = new JRadioButton("Easy");
+        difficultyEasyButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                boardSize = DIFFICULTY_EASY_SIZE;
+            }
+        });
         difficultyEasyButton.setSelected(true);
         difficultyButtonGroup.add(difficultyEasyButton);
         GridBagConstraints gbc_difficultyEasyButton = new GridBagConstraints();
@@ -144,6 +194,13 @@ public class AiDuelOptionsWindow extends JDialog
         levelDifficultyPanel.add(difficultyEasyButton, gbc_difficultyEasyButton);
         
         JRadioButton difficultyMediumButton = new JRadioButton("Medium");
+        difficultyMediumButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                boardSize = DIFFICULTY_MEDIUM_SIZE;
+            }
+        });
         difficultyButtonGroup.add(difficultyMediumButton);
         GridBagConstraints gbc_difficultyMediumButton = new GridBagConstraints();
         gbc_difficultyMediumButton.anchor = GridBagConstraints.NORTHWEST;
@@ -153,6 +210,13 @@ public class AiDuelOptionsWindow extends JDialog
         levelDifficultyPanel.add(difficultyMediumButton, gbc_difficultyMediumButton);
         
         JRadioButton difficultyHardButton = new JRadioButton("Hard");
+        difficultyHardButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                boardSize = DIFFICULTY_HARD_SIZE;
+            }
+        });
         difficultyButtonGroup.add(difficultyHardButton);
         GridBagConstraints gbc_difficultyHardButton = new GridBagConstraints();
         gbc_difficultyHardButton.anchor = GridBagConstraints.NORTHWEST;
@@ -162,6 +226,13 @@ public class AiDuelOptionsWindow extends JDialog
         levelDifficultyPanel.add(difficultyHardButton, gbc_difficultyHardButton);
         
         JRadioButton difficultyVeryHardButton = new JRadioButton("Very hard");
+        difficultyVeryHardButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                boardSize = DIFFICULTY_VERY_HARD_SIZE;
+            }
+        });
         difficultyButtonGroup.add(difficultyVeryHardButton);
         GridBagConstraints gbc_difficultyVeryHardButton = new GridBagConstraints();
         gbc_difficultyVeryHardButton.anchor = GridBagConstraints.NORTHWEST;
@@ -202,6 +273,13 @@ public class AiDuelOptionsWindow extends JDialog
         aiSecondPanel.add(aiSecondPanelTopStrut, gbc_aiSecondPanelTopStrut);
         
         JRadioButton aiSecondMinMaxRadioButton = new JRadioButton("MinMax");
+        aiSecondMinMaxRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "minmax";
+            }
+        });
         aiSecondMinMaxRadioButton.setSelected(true);
         aiSecondTypeButtonGroup.add(aiSecondMinMaxRadioButton);
         GridBagConstraints gbc_aiSecondMinMaxRadioButton = new GridBagConstraints();
@@ -212,6 +290,13 @@ public class AiDuelOptionsWindow extends JDialog
         aiSecondPanel.add(aiSecondMinMaxRadioButton, gbc_aiSecondMinMaxRadioButton);
         
         JRadioButton aiSecondGreedyRadioButton = new JRadioButton("Greedy");
+        aiSecondGreedyRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "greedy";
+            }
+        });
         aiSecondTypeButtonGroup.add(aiSecondGreedyRadioButton);
         GridBagConstraints gbc_aiSecondGreedyRadioButton = new GridBagConstraints();
         gbc_aiSecondGreedyRadioButton.anchor = GridBagConstraints.WEST;
@@ -221,6 +306,13 @@ public class AiDuelOptionsWindow extends JDialog
         aiSecondPanel.add(aiSecondGreedyRadioButton, gbc_aiSecondGreedyRadioButton);
         
         JRadioButton aiSecondStupidRadioButton = new JRadioButton("Stupid");
+        aiSecondStupidRadioButton.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                aiSecondType = "stupid";
+            }
+        });
         aiSecondTypeButtonGroup.add(aiSecondStupidRadioButton);
         GridBagConstraints gbc_aiSecondStupidRadioButton = new GridBagConstraints();
         gbc_aiSecondStupidRadioButton.insets = new Insets(0, 0, 5, 0);
@@ -245,12 +337,20 @@ public class AiDuelOptionsWindow extends JDialog
         
 
         
-        JSpinner iterationCountSpinner = new JSpinner();
-        iterationCountSpinner.setModel(new SpinnerNumberModel(100, 1, 10000, 1));
+        final JSpinner iterationCountSpinner = new JSpinner();
+        iterationCountSpinner.setModel(new SpinnerNumberModel(10, 1, 10000, 1));
         iterationNumberPanel.add(iterationCountSpinner, BorderLayout.CENTER);
 
         
         JButton startAiDuels = new JButton("Start");
+        startAiDuels.addActionListener(new ActionListener()
+        {                 
+            public void actionPerformed(ActionEvent event)
+            {
+                iterationCount = (Integer) iterationCountSpinner.getValue();
+                view.sendBoardEvent(new StartAIDuelEvent(aiFirstType, aiSecondType, boardSize, iterationCount));
+            }
+        });
         iterationNumberPanel.add(startAiDuels, BorderLayout.EAST);
         
     }
