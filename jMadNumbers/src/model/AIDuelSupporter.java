@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Point;
+import java.math.BigDecimal;
 
 import view.AiDuelOptionsWindow;
 
@@ -128,14 +129,14 @@ public class AIDuelSupporter
                 drawCount++;
             
                 // save score difference (for variance)
-            scoreDifferenceValues[currentIteration] = (aiFirstScore - aiSecondScore);
-            
-            
-            
+            scoreDifferenceValues[currentIteration] = (aiFirstScore - aiSecondScore); 
         }
         
-        Double averageScoreDifference = getAverageScoreDifference();
-        Double scoreDifferencesVariance = getScoreDifferencesVariance();
+        optionsWindow.setProgress(iterationCount, iterationCount);
+        
+            // for specified precision of average and variance
+        BigDecimal averageScoreDifference = new BigDecimal( getAverageScoreDifference() ).setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal scoreDifferencesVariance = new BigDecimal( getScoreDifferencesVariance() ).setScale(2, BigDecimal.ROUND_HALF_UP);
         
         messageForGUI = "<html>Results:<br>AI 1 (" + aiFirstType + ") win count: " + aiFirstWinCount.toString() 
                 + "<br>AI 2 (" + aiSecondType + ") win count: " + aiSecondWinCount.toString() 
